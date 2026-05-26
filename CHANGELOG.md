@@ -11,6 +11,9 @@ All notable repository governance changes are documented here.
 - Issue #17 migration structure: `CONCEPT.md`, обновленные root governance
   files, `standards/README.md`, `governance/REPO_MODEL.md` и `tools/`.
 - Repository structure validation в `tools/validate-repository-structure.sh`.
+- Issue #35: soft frontmatter validation в `tools/validate-frontmatter.sh`
+  для проверки обязательных полей `status`, `version`, `updated` и
+  `ai-generated` без блокирующего exit code.
 - Active documentation для Anti-Inflation principle: артефакт создается только
   когда снижает операционную боль.
 - Issue #31: `standards/RESEARCH_PROFILE.md` — canonical профиль
