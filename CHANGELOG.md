@@ -4,7 +4,23 @@ All notable repository governance changes are documented here.
 
 ## Unreleased
 
-No unreleased changes.
+### Added
+
+- Issue #59: каркас подкаталогов `projects/mango/` (`kb/`, `prompts/`, `docs/`,
+  `experiments/`, `decisions/`) как точки расширения для будущей документации
+  промптов и базы знаний. Пустые папки отслеживаются в Git через `.gitkeep` и
+  зарегистрированы как active в `tools/validate-repository-structure.sh`.
+
+### Changed
+
+- Issue #59: раздел «Шаблон структуры» в `projects/mango/README.md` (v1.1)
+  дополнен папкой `decisions/` и пометкой о том, что подкаталоги уже созданы как
+  placeholder-точки.
+
+### Removed
+
+- Issue #59: служебный корневой `.gitkeep`, автогенерированный при создании PR,
+  чтобы `tools/validate-repository-structure.sh` снова проходил без ошибок.
 
 ## [1.1] - 2026-05-26
 

@@ -60,6 +60,11 @@ is_active_file() {
     education/README.md | \
     projects/README.md | \
     projects/mango/README.md | \
+    projects/mango/kb/.gitkeep | \
+    projects/mango/prompts/.gitkeep | \
+    projects/mango/docs/.gitkeep | \
+    projects/mango/experiments/.gitkeep | \
+    projects/mango/decisions/.gitkeep | \
     projects/education-ba-prompt/README.md | \
     projects/education-ba-prompt/docs/course-ideas.md | \
     projects/repo-development/README.md | \
@@ -88,6 +93,11 @@ required_directories=(
   "research"
   "frameworks"
   "projects"
+  "projects/mango/kb"
+  "projects/mango/prompts"
+  "projects/mango/docs"
+  "projects/mango/experiments"
+  "projects/mango/decisions"
   "education"
   "governance"
   "tools"
@@ -121,6 +131,11 @@ required_files=(
   "education/README.md"
   "projects/README.md"
   "projects/mango/README.md"
+  "projects/mango/kb/.gitkeep"
+  "projects/mango/prompts/.gitkeep"
+  "projects/mango/docs/.gitkeep"
+  "projects/mango/experiments/.gitkeep"
+  "projects/mango/decisions/.gitkeep"
   "projects/repo-development/README.md"
   "projects/repo-development/docs/migration-audit-2026-05.md"
   "governance/REPO_MODEL.md"
