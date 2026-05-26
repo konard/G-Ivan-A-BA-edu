@@ -16,6 +16,17 @@ All notable repository governance changes are documented here.
 - Repository structure validation в `tools/validate-repository-structure.sh`.
 - Active documentation для Anti-Inflation principle: артефакт создается только
   когда снижает операционную боль.
+- Issue #31: `standards/RESEARCH_PROFILE.md` — canonical профиль
+  исследовательских проектов (именование `YYYY-MM-topic.md`, frontmatter
+  исследований, организация экспериментов `exp-<slug>/`, чек-лист публикации и
+  цитируемые best practices). Зарегистрирован как active в `standards/README.md`
+  и проверяется в `tools/validate-repository-structure.sh`.
+- `standards/PRODUCT_PROFILE.md` (issue #29): профиль для продуктовых проектов
+  с обязательными артефактами, шаблоном `PRODUCT_VISION.md` и матрицей
+  адаптации по стадиям MVP / Pilot / Production; зарегистрирован в реестре
+  standards и в structure validation.
+- `standards/TEAM_CONTRACT.md` как шаблон и инструкция для создания
+  project-level `CONTRIBUTING.md` и `AI_GOVERNANCE.md` в spoke-проектах.
 
 ### Changed
 
@@ -40,6 +51,7 @@ All notable repository governance changes are documented here.
 - [standards/README.md](standards/README.md)
 - [standards/GLOSSARY.md](standards/GLOSSARY.md)
 - [standards/EDUCATION_PROFILE.md](standards/EDUCATION_PROFILE.md)
+- [standards/TEAM_CONTRACT.md](standards/TEAM_CONTRACT.md)
 - [governance/REPO_MODEL.md](governance/REPO_MODEL.md)
 
 ## TODO

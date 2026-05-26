@@ -38,8 +38,11 @@ is_active_file() {
     CHANGELOG.md | \
     LICENSE | \
     standards/README.md | \
+    standards/RESEARCH_PROFILE.md | \
     standards/GLOSSARY.md | \
     standards/EDUCATION_PROFILE.md | \
+    standards/PRODUCT_PROFILE.md | \
+    standards/TEAM_CONTRACT.md | \
     governance/REPO_MODEL.md | \
     .github/ISSUE_TEMPLATE/task.yml | \
     tools/validate-repository-structure.sh)
@@ -75,8 +78,11 @@ required_files=(
   "CHANGELOG.md"
   "LICENSE"
   "standards/README.md"
+  "standards/RESEARCH_PROFILE.md"
   "standards/GLOSSARY.md"
   "standards/EDUCATION_PROFILE.md"
+  "standards/PRODUCT_PROFILE.md"
+  "standards/TEAM_CONTRACT.md"
   "governance/REPO_MODEL.md"
   ".github/ISSUE_TEMPLATE/task.yml"
   "tools/validate-repository-structure.sh"
@@ -110,6 +116,8 @@ fi
 
 require_text "README.md" "CONCEPT.md"
 require_text "README.md" "standards/README.md"
+require_text "README.md" "standards/GLOSSARY.md"
+require_text "README.md" "standards/TEAM_CONTRACT.md"
 require_text "README.md" "governance/REPO_MODEL.md"
 require_text "README.md" "./tools/validate-repository-structure.sh"
 
@@ -124,7 +132,7 @@ require_text "CONCEPT.md" "Версия: 1.0"
 require_text "CONCEPT.md" "Operating Mode"
 require_text "CONCEPT.md" "structured mode"
 require_text "CONCEPT.md" "creative mode"
-require_text "CONCEPT.md" "TEAM_CONTRACT.md"
+require_text "CONCEPT.md" "standards/TEAM_CONTRACT.md"
 require_text "CONCEPT.md" "Шаблон командного соглашения"
 require_text "CONCEPT.md" "GLOSSARY.md"
 require_text "CONCEPT.md" "единой терминологии"
@@ -144,8 +152,43 @@ require_text "CHANGELOG.md" "### Removed"
 
 require_text "standards/README.md" "| Стандарт | Статус | Где применяется | Источник |"
 require_text "standards/README.md" "Как пользоваться"
+require_text "standards/README.md" "RESEARCH_PROFILE.md"
+require_text "standards/README.md" "TEAM_CONTRACT.md"
 require_text "standards/README.md" "standards/GLOSSARY.md"
 require_text "standards/README.md" "standards/EDUCATION_PROFILE.md"
+require_text "standards/README.md" "PRODUCT_PROFILE.md"
+
+require_text "standards/TEAM_CONTRACT.md" "status: canonical"
+require_text "standards/TEAM_CONTRACT.md" "version: 1.0"
+require_text "standards/TEAM_CONTRACT.md" "updated: 2026-05-26"
+require_text "standards/TEAM_CONTRACT.md" "ai-generated: false"
+require_text "standards/TEAM_CONTRACT.md" "Назначение"
+require_text "standards/TEAM_CONTRACT.md" "не является контрактом для прямого использования"
+require_text "standards/TEAM_CONTRACT.md" "CONTRIBUTING.md"
+require_text "standards/TEAM_CONTRACT.md" "AI_GOVERNANCE.md"
+require_text "standards/TEAM_CONTRACT.md" "Definition of Done"
+require_text "standards/TEAM_CONTRACT.md" "operating modes"
+require_text "standards/TEAM_CONTRACT.md" "disclosure"
+require_text "standards/TEAM_CONTRACT.md" "self-review checklist"
+require_text "standards/TEAM_CONTRACT.md" "RESEARCH_PROFILE.md"
+require_text "standards/TEAM_CONTRACT.md" "PRODUCT_PROFILE.md"
+require_text "standards/TEAM_CONTRACT.md" "EDUCATION_PROFILE.md"
+require_text "standards/TEAM_CONTRACT.md" "Источники"
+
+require_text "standards/RESEARCH_PROFILE.md" "status: canonical"
+require_text "standards/RESEARCH_PROFILE.md" "version: 1.0"
+require_text "standards/RESEARCH_PROFILE.md" "updated: 2026-05-26"
+require_text "standards/RESEARCH_PROFILE.md" "ai-generated: false"
+require_text "standards/RESEARCH_PROFILE.md" "Назначение"
+require_text "standards/RESEARCH_PROFILE.md" "Обязательные артефакты"
+require_text "standards/RESEARCH_PROFILE.md" "YYYY-MM-topic.md"
+require_text "standards/RESEARCH_PROFILE.md" "exp-<slug>"
+require_text "standards/RESEARCH_PROFILE.md" "Шаблон frontmatter исследования"
+require_text "standards/RESEARCH_PROFILE.md" "external-analysis | internal-analysis | experiment"
+require_text "standards/RESEARCH_PROFILE.md" "Как организовать исследование"
+require_text "standards/RESEARCH_PROFILE.md" "Чек-лист готовности к публикации"
+require_text "standards/RESEARCH_PROFILE.md" "Правила цитирования источников"
+require_text "standards/RESEARCH_PROFILE.md" "FAIR Principles"
 
 require_text "standards/GLOSSARY.md" "status: canonical"
 require_text "standards/GLOSSARY.md" "version: 1.0"
@@ -193,6 +236,11 @@ require_text "standards/EDUCATION_PROFILE.md" "CAST Universal Design for Learnin
 require_text "standards/EDUCATION_PROFILE.md" "UNESCO Open Educational Resources"
 require_text "standards/EDUCATION_PROFILE.md" "1EdTech Common Cartridge"
 require_text "standards/EDUCATION_PROFILE.md" "ADL Experience API"
+require_text "standards/PRODUCT_PROFILE.md" "status: canonical"
+require_text "standards/PRODUCT_PROFILE.md" "ai-generated: false"
+require_text "standards/PRODUCT_PROFILE.md" "PRODUCT_VISION.md"
+require_text "standards/PRODUCT_PROFILE.md" "Обязательные артефакты"
+require_text "standards/PRODUCT_PROFILE.md" "Метрики успеха"
 
 require_text "governance/REPO_MODEL.md" "Артефакт только при операционной боли"
 require_text "governance/REPO_MODEL.md" "Anti-Inflation"
