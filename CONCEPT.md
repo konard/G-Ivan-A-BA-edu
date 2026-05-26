@@ -1,12 +1,19 @@
+---
+status: canonical
+version: 1.0
+updated: 2026-05-26
+ai-generated: false
+---
+
 # Concept
 
-Версия: 1
+Версия: 1.0
 
 Дата: 2026-05-26
 
-Этот документ собирает предыдущие материалы о продуктовом видении, структуре
-репозитория, governance-исследовании и operational backbone в короткий
-активный контракт для `hybrid-Intelligence-lab`.
+Этот документ собирает предыдущие материалы о структуре репозитория,
+governance-исследовании и operational backbone в короткий активный контракт для
+`hybrid-Intelligence-lab`.
 
 ## Назначение
 
@@ -35,6 +42,7 @@ traceable.
 | Separation of concerns | Research, education, frameworks, projects, standards и governance имеют разные дома. |
 | Existing frameworks first | Новый framework появляется только после сравнения и выявленного gap. |
 | Traceability | Важные утверждения связаны с issue, PR, источниками, экспериментами или прежними артефактами. |
+| Operating Mode | Работа ведется в structured mode по умолчанию; creative mode используется только там, где задача явно требует исследовательской генерации вариантов. |
 | Human-in-control | AI может готовить черновики и проверки, но решения остаются за Founder & PO и reviewers. |
 | Safe publication | Secrets, клиентский sensitive context и несанитизированные production-промпты не публикуются. |
 | Anti-Inflation | Артефакт добавляется только при операционной боли, которую он снижает. |
@@ -80,6 +88,8 @@ traceable.
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution workflow и PR expectations. |
 | [standards/README.md](standards/README.md) | Реестр standards и инструкция применения. |
 | [governance/REPO_MODEL.md](governance/REPO_MODEL.md) | Правила структуры и Anti-Inflation. |
+| `TEAM_CONTRACT.md` | Шаблон командного соглашения для spoke-проектов; не является активным контрактом этого репозитория, пока файл не создан и не принят review. |
+| `GLOSSARY.md` | Планируемый источник единой терминологии; до его создания термины фиксируются в ближайшем active artifact или issue. |
 
 ## Стандарты
 
