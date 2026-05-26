@@ -43,6 +43,7 @@ is_active_file() {
     standards/EDUCATION_PROFILE.md | \
     standards/PRODUCT_PROFILE.md | \
     standards/TEAM_CONTRACT.md | \
+    standards/ISSUE_WORKFLOW.md | \
     governance/REPO_MODEL.md | \
     .github/ISSUE_TEMPLATE/task.yml | \
     tools/validate-frontmatter.sh | \
@@ -84,6 +85,7 @@ required_files=(
   "standards/EDUCATION_PROFILE.md"
   "standards/PRODUCT_PROFILE.md"
   "standards/TEAM_CONTRACT.md"
+  "standards/ISSUE_WORKFLOW.md"
   "governance/REPO_MODEL.md"
   ".github/ISSUE_TEMPLATE/task.yml"
   "tools/validate-frontmatter.sh"
@@ -161,6 +163,7 @@ require_text "standards/README.md" "TEAM_CONTRACT.md"
 require_text "standards/README.md" "standards/GLOSSARY.md"
 require_text "standards/README.md" "standards/EDUCATION_PROFILE.md"
 require_text "standards/README.md" "PRODUCT_PROFILE.md"
+require_text "standards/README.md" "ISSUE_WORKFLOW.md"
 
 require_text "standards/TEAM_CONTRACT.md" "status: canonical"
 require_text "standards/TEAM_CONTRACT.md" "version: 1.0"
@@ -178,6 +181,29 @@ require_text "standards/TEAM_CONTRACT.md" "RESEARCH_PROFILE.md"
 require_text "standards/TEAM_CONTRACT.md" "PRODUCT_PROFILE.md"
 require_text "standards/TEAM_CONTRACT.md" "EDUCATION_PROFILE.md"
 require_text "standards/TEAM_CONTRACT.md" "Источники"
+
+require_text "standards/ISSUE_WORKFLOW.md" "status: canonical"
+require_text "standards/ISSUE_WORKFLOW.md" "version: 1.0"
+require_text "standards/ISSUE_WORKFLOW.md" "updated: 2026-05-26"
+require_text "standards/ISSUE_WORKFLOW.md" "ai-generated: false"
+require_text "standards/ISSUE_WORKFLOW.md" "## Назначение"
+require_text "standards/ISSUE_WORKFLOW.md" "## Статусы задач"
+require_text "standards/ISSUE_WORKFLOW.md" "## Правила переходов"
+require_text "standards/ISSUE_WORKFLOW.md" "## Связи между артефактами"
+require_text "standards/ISSUE_WORKFLOW.md" "## Точки автоматизации"
+require_text "standards/ISSUE_WORKFLOW.md" "## Источники и адаптация"
+require_text "standards/ISSUE_WORKFLOW.md" '`draft`'
+require_text "standards/ISSUE_WORKFLOW.md" '`ready`'
+require_text "standards/ISSUE_WORKFLOW.md" '`in-progress`'
+require_text "standards/ISSUE_WORKFLOW.md" '`review`'
+require_text "standards/ISSUE_WORKFLOW.md" '`merged`'
+require_text "standards/ISSUE_WORKFLOW.md" '`closed`'
+require_text "standards/ISSUE_WORKFLOW.md" '`blocked`'
+require_text "standards/ISSUE_WORKFLOW.md" "User Story / ФТ"
+require_text "standards/ISSUE_WORKFLOW.md" "CHANGELOG.md"
+require_text "standards/ISSUE_WORKFLOW.md" "governance/ARTIFACT_MAP.md"
+require_text "standards/ISSUE_WORKFLOW.md" "validate-frontmatter.sh"
+require_text "standards/ISSUE_WORKFLOW.md" "validate-repository-structure.sh"
 
 require_text "standards/RESEARCH_PROFILE.md" "status: canonical"
 require_text "standards/RESEARCH_PROFILE.md" "version: 1.0"
