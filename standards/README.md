@@ -9,12 +9,12 @@
 | Стандарт | Статус | Где применяется | Источник |
 | --- | --- | --- | --- |
 | Единый глоссарий терминов | Active | Issues, standards, governance, AI-assisted work | [standards/GLOSSARY.md](GLOSSARY.md) |
+| Education project profile | Active | `education/{course}/`, course materials, workshops и учебная документация | [standards/EDUCATION_PROFILE.md](EDUCATION_PROFILE.md) |
 | Концепция репозитория | Active | Root concept и назначение репозитория | [CONCEPT.md](../CONCEPT.md) |
 | AI governance contract | Active | AI-assisted issues, PRs и reviews | [AI_GOVERNANCE.md](../AI_GOVERNANCE.md) |
 | Repository model | Active | Размещение артефактов и правила создания | [governance/REPO_MODEL.md](../governance/REPO_MODEL.md) |
 | Research report | Planned | `research/<domain>/` | Создать после повторяющихся research tasks. |
 | Framework proposal | Planned | `frameworks/` | Создать после documented framework gap. |
-| Education program | Planned | `education/` | Создать после повторения стабильного course format. |
 | Project knowledge base | Planned | `projects/` | Создать после повторяющейся потребности в project context. |
 | Artifact lifecycle | Planned | Все reviewed artifacts | Создать, когда maturity states станут операционно необходимы. |
 
@@ -24,11 +24,14 @@
    [governance/REPO_MODEL.md](../governance/REPO_MODEL.md).
 2. Проверьте терминологию по [standards/GLOSSARY.md](GLOSSARY.md), если
    документ вводит governance, lifecycle или AI-assisted work terms.
-3. Используйте active standard из таблицы, если он уже есть.
-4. Если standard planned, но еще не active, держите артефакт минимальным и
+3. Для образовательных материалов используйте
+   [standards/EDUCATION_PROFILE.md](EDUCATION_PROFILE.md) до создания курса,
+   воркшопа или учебной документации.
+4. Используйте active standard из таблицы, если он уже есть.
+5. Если standard planned, но еще не active, держите артефакт минимальным и
    объясните gap в issue или PR.
-5. Не добавляйте новый standard только потому, что документ можно
+6. Не добавляйте новый standard только потому, что документ можно
    стандартизировать. Добавляйте его, когда повторяющаяся работа создает
    реальную coordination или review problem.
-6. Ссылайтесь на новый active standard из этой таблицы и ближайшего README или
+7. Ссылайтесь на новый active standard из этой таблицы и ближайшего README или
    governance document.

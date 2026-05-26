@@ -6,6 +6,9 @@ All notable repository governance changes are documented here.
 
 ### Added
 
+- Canonical education project profile в `standards/EDUCATION_PROFILE.md` для
+  структуры курсов, модулей, уроков, упражнений и адаптации под open,
+  commercial и internal learning formats.
 - Canonical glossary в `standards/GLOSSARY.md` для единых терминов standards,
   governance и AI-assisted work.
 - Issue #17 migration structure: `CONCEPT.md`, обновленные root governance
@@ -36,6 +39,7 @@ All notable repository governance changes are documented here.
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 - [standards/README.md](standards/README.md)
 - [standards/GLOSSARY.md](standards/GLOSSARY.md)
+- [standards/EDUCATION_PROFILE.md](standards/EDUCATION_PROFILE.md)
 - [governance/REPO_MODEL.md](governance/REPO_MODEL.md)
 
 ## TODO
