@@ -38,6 +38,7 @@ is_active_file() {
     CHANGELOG.md | \
     LICENSE | \
     standards/README.md | \
+    standards/GLOSSARY.md | \
     standards/PRODUCT_PROFILE.md | \
     governance/REPO_MODEL.md | \
     .github/ISSUE_TEMPLATE/task.yml | \
@@ -74,6 +75,7 @@ required_files=(
   "CHANGELOG.md"
   "LICENSE"
   "standards/README.md"
+  "standards/GLOSSARY.md"
   "standards/PRODUCT_PROFILE.md"
   "governance/REPO_MODEL.md"
   ".github/ISSUE_TEMPLATE/task.yml"
@@ -142,7 +144,28 @@ require_text "CHANGELOG.md" "### Removed"
 
 require_text "standards/README.md" "| Стандарт | Статус | Где применяется | Источник |"
 require_text "standards/README.md" "Как пользоваться"
+require_text "standards/README.md" "standards/GLOSSARY.md"
 require_text "standards/README.md" "PRODUCT_PROFILE.md"
+
+require_text "standards/GLOSSARY.md" "status: canonical"
+require_text "standards/GLOSSARY.md" "version: 1.0"
+require_text "standards/GLOSSARY.md" "updated: 2026-05-26"
+require_text "standards/GLOSSARY.md" "ai-generated: false"
+require_text "standards/GLOSSARY.md" "Standard"
+require_text "standards/GLOSSARY.md" "Concept"
+require_text "standards/GLOSSARY.md" "Policy"
+require_text "standards/GLOSSARY.md" "Contract"
+require_text "standards/GLOSSARY.md" "Practice"
+require_text "standards/GLOSSARY.md" "Framework"
+require_text "standards/GLOSSARY.md" "Guideline"
+require_text "standards/GLOSSARY.md" "Artifact"
+require_text "standards/GLOSSARY.md" "Canonical"
+require_text "standards/GLOSSARY.md" "Draft"
+require_text "standards/GLOSSARY.md" "Operating Mode"
+require_text "standards/GLOSSARY.md" "Profile"
+require_text "standards/GLOSSARY.md" "Как использовать"
+require_text "standards/GLOSSARY.md" "Связи терминов"
+require_text "standards/GLOSSARY.md" "Источники"
 
 require_text "standards/PRODUCT_PROFILE.md" "status: canonical"
 require_text "standards/PRODUCT_PROFILE.md" "ai-generated: false"

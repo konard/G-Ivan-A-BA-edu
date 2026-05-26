@@ -19,6 +19,7 @@
 | [CHANGELOG.md](CHANGELOG.md) | Date-based журнал governance-изменений репозитория. |
 | [LICENSE](LICENSE) | Текущий статус лицензии и pending-решение Founder & PO. |
 | [standards/README.md](standards/README.md) | Таблица активных и планируемых стандартов. |
+| [standards/GLOSSARY.md](standards/GLOSSARY.md) | Единый словарь терминов для standards, governance и AI-assisted work. |
 | [governance/REPO_MODEL.md](governance/REPO_MODEL.md) | Модель структуры репозитория и Anti-Inflation правило. |
 
 ## Структура

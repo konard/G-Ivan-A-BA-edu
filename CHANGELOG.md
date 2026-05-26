@@ -6,6 +6,8 @@ All notable repository governance changes are documented here.
 
 ### Added
 
+- Canonical glossary в `standards/GLOSSARY.md` для единых терминов standards,
+  governance и AI-assisted work.
 - Issue #17 migration structure: `CONCEPT.md`, обновленные root governance
   files, `standards/README.md`, `governance/REPO_MODEL.md` и `tools/`.
 - Repository structure validation в `tools/validate-repository-structure.sh`.
@@ -37,6 +39,7 @@ All notable repository governance changes are documented here.
 - [AI_GOVERNANCE.md](AI_GOVERNANCE.md)
 - [CONTRIBUTING.md](CONTRIBUTING.md)
 - [standards/README.md](standards/README.md)
+- [standards/GLOSSARY.md](standards/GLOSSARY.md)
 - [governance/REPO_MODEL.md](governance/REPO_MODEL.md)
 
 ## TODO
