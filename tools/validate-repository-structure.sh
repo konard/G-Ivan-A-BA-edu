@@ -47,6 +47,7 @@ is_active_file() {
     standards/ISSUE_WORKFLOW.md | \
     research/mango/taxonomy-concept-2026-05.md | \
     research/mango/requirements-lifecycle-uncertainty-2026-05.md | \
+    research/mango/rag-mapping-roadmap-2026-05.md | \
     research/README.md | \
     research/mango/README.md | \
     research/mango/classification.md | \
@@ -115,6 +116,7 @@ required_files=(
   "research/mango/classification-tz.html"
   "research/mango/requirements-flow.md"
   "research/mango/requirements-flow.html"
+  "research/mango/rag-mapping-roadmap-2026-05.md"
   "frameworks/README.md"
   "education/README.md"
   "projects/README.md"
@@ -335,6 +337,7 @@ require_text "governance/ARTIFACT_MAP.md" "Как использовать ка�
 require_text "governance/ARTIFACT_MAP.md" "Как обновлять карту"
 require_text "governance/ARTIFACT_MAP.md" "GLOSSARY.md"
 require_text "governance/ARTIFACT_MAP.md" "research/mango/classification.md"
+require_text "governance/ARTIFACT_MAP.md" "research/mango/rag-mapping-roadmap-2026-05.md"
 require_text "governance/ARTIFACT_MAP.md" "projects/README.md"
 
 require_text "research/README.md" "status: canonical"
@@ -344,6 +347,7 @@ require_text "research/README.md" "research/<domain>/exp-<slug>/"
 require_text "research/mango/README.md" "status: canonical"
 require_text "research/mango/README.md" "classification.md"
 require_text "research/mango/README.md" "requirements-flow.md"
+require_text "research/mango/README.md" "rag-mapping-roadmap-2026-05.md"
 require_text "research/mango/README.md" "research/mango/exp-tz-corpus/"
 
 require_text "research/mango/classification.md" "status: reviewed"
@@ -352,6 +356,12 @@ require_text "research/mango/classification-tz.md" "status: reviewed"
 require_text "research/mango/classification-tz.md" "source: research/mango/classification-tz-old.md"
 require_text "research/mango/requirements-flow.md" "status: reviewed"
 require_text "research/mango/requirements-flow.md" "source: research/mango/requirements-flow-old.md"
+require_text "research/mango/rag-mapping-roadmap-2026-05.md" "status: draft"
+require_text "research/mango/rag-mapping-roadmap-2026-05.md" "type: process-research"
+require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Маппинг продуктов/фич"
+require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Roadmap реализации проекта"
+require_text "research/mango/rag-mapping-roadmap-2026-05.md" "PlantUML"
+require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Вопросы для согласования"
 
 require_text "projects/README.md" "status: canonical"
 require_text "projects/README.md" "mango/"

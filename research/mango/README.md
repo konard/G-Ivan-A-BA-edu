@@ -8,8 +8,8 @@ source: research/mango/README-old.md
 
 # Research: MANGO OFFICE
 
-Исследовательские материалы по классификации продуктов, требований и flow
-анализа тендерных ТЗ MANGO OFFICE.
+Исследовательские материалы по классификации продуктов, требований,
+документационной стратегии и flow анализа тендерных ТЗ MANGO OFFICE.
 
 ## Документы
 
@@ -19,6 +19,7 @@ source: research/mango/README-old.md
 | [classification-tz.md](classification-tz.md) | Проверка классификатора на корпусе из 30 ТЗ и рекомендации по дополнениям. |
 | [requirements-flow.md](requirements-flow.md) | Flow требований для AI-анализа тендерных ТЗ MANGO OFFICE. |
 | [requirements-lifecycle-uncertainty-2026-05.md](requirements-lifecycle-uncertainty-2026-05.md) | Жизненный цикл требования на доработку: обработка неопределенности, декомпозиция и сравнение с международной практикой. |
+| [rag-mapping-roadmap-2026-05.md](rag-mapping-roadmap-2026-05.md) | Маппинг продуктов/фич как RAG-навигатор, roadmap автоматизации БА и карта применения PlantUML-диаграмм. |
 | [classification.html](classification.html) | HTML-export классификации. |
 | [classification-tz.html](classification-tz.html) | HTML-export проверки классификатора на корпусе ТЗ. |
 | [requirements-flow.html](requirements-flow.html) | HTML-export flow требований. |
