@@ -1,15 +1,15 @@
 ---
 status: canonical
-version: 1.0
-updated: 2026-05-26
+version: 1.1
+updated: 2026-05-27
 ai-generated: false
 ---
 
 # Artifact Map
 
-Версия: 1.0
+Версия: 1.1
 
-Дата: 2026-05-26
+Дата: 2026-05-27
 
 Карта артефактов — единая точка входа в репозиторий `hybrid-Intelligence-lab`.
 Она показывает, что где лежит, зачем нужно и как связано, чтобы новые участники
@@ -79,7 +79,8 @@ ai-generated: false
 | `/projects/` | каталог | Project knowledge bases и контекст spoke-репозиториев (сейчас — `-old` входы). | ✅ Да | `standards/PRODUCT_PROFILE.md`, `governance/REPO_MODEL.md` |
 | `/education/` | каталог | Open education: программы и учебные материалы (сейчас — `-old` входы). | ✅ Да | `standards/EDUCATION_PROFILE.md`, `governance/REPO_MODEL.md` |
 | `/projects/README.md` | навигация | Правило выбора `/projects` vs spoke-репозиторий и список активных project areas. | ✅ Да | `standards/PRODUCT_PROFILE.md`, `governance/REPO_MODEL.md` |
-| `/projects/mango/README.md` | навигация | Пилотный продуктовый spoke-проект Mango: применяемые стандарты и связь с research. | ✅ Да | `projects/README.md`, `research/mango/README.md`, `standards/PRODUCT_PROFILE.md` |
+| `/projects/mango/README.md` | навигация | Пилотный продуктовый spoke-проект Mango: применяемые стандарты и связь с research. | ✅ Да | `projects/README.md`, `research/mango/README.md`, `standards/PRODUCT_PROFILE.md`, `projects/mango/standards/classification-glossary.md` |
+| `/projects/mango/standards/classification-glossary.md` | стандарт | Mango-only глоссарий уровней Domain, Capability, Feature и Atomic Function для исследований и `kb/`. | ✅ Да | `projects/mango/README.md`, `research/mango/classification.md`, `research/mango/taxonomy-concept-2026-05.md`, `standards/GLOSSARY.md` |
 | `/projects/repo-development/README.md` | навигация | Развитие структуры, governance и локальных проверок самого репозитория. | ✅ Да | `projects/README.md`, `governance/REPO_MODEL.md` |
 | `/projects/repo-development/docs/migration-audit-2026-05.md` | исследование | Аудит миграции: согласованность, ссылки, таблица `-old` и рекомендации cleanup. | ✅ Да | `projects/repo-development/README.md`, `CONCEPT.md` |
 | `/research/README.md` | навигация | Навигация по исследовательским направлениям и правилам воспроизводимости. | ✅ Да | `standards/RESEARCH_PROFILE.md`, `governance/REPO_MODEL.md` |
