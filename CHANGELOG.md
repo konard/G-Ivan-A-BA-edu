@@ -6,6 +6,14 @@ All notable repository governance changes are documented here.
 
 ### Added
 
+- Issue #69: справочник `research/mango/capability-decomposition-2026-05.md`
+  (`status: draft`, `scope: mango-only`) — детализация уровня `Atomic Function`
+  для трёх пилотных доменов (`voice-ucaas`, `contact-center`,
+  `digital-channels`): 54 функции с параметрами, ≥2 международными источниками
+  и примерами требований из реальных ТЗ, критерии атомарности, модель связи с
+  НФТ-классами, интеграция с `kb/product-matrix.md` и процесс обновления.
+  Файл зарегистрирован как active в `tools/validate-repository-structure.sh`,
+  `governance/ARTIFACT_MAP.md` и `research/mango/README.md`.
 - Issue #67: четырёхуровневая иерархия `Domain → Capability → Feature →
   Atomic Function` в `research/mango/classification.md` (v3.0): семь доменов
   пилота, явные слои `📊 Product Layer` и `🛒 Commercial Layer` со связью через
@@ -37,6 +45,9 @@ All notable repository governance changes are documented here.
 
 ### Removed
 
+- Issue #69: повторно удалён служебный корневой `.gitkeep`, восстановленный при
+  создании PR-ветки, чтобы `tools/validate-repository-structure.sh` проходил без
+  ошибок.
 - Issue #67: повторно удалён служебный корневой `.gitkeep`, восстановленный при
   создании PR-ветки, чтобы `tools/validate-repository-structure.sh` проходил без
   ошибок.

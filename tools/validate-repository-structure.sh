@@ -49,6 +49,7 @@ is_active_file() {
     research/mango/taxonomy-concept-2026-05.md | \
     research/mango/requirements-lifecycle-uncertainty-2026-05.md | \
     research/mango/rag-mapping-roadmap-2026-05.md | \
+    research/mango/capability-decomposition-2026-05.md | \
     research/README.md | \
     research/mango/README.md | \
     research/mango/classification.md | \
@@ -394,6 +395,18 @@ require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Маппинг п�
 require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Roadmap реализации проекта"
 require_text "research/mango/rag-mapping-roadmap-2026-05.md" "PlantUML"
 require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Вопросы для согласования"
+
+require_text "research/mango/capability-decomposition-2026-05.md" "status: draft"
+require_text "research/mango/capability-decomposition-2026-05.md" "type: atomic-functions-reference"
+require_text "research/mango/capability-decomposition-2026-05.md" "scope: mango-only"
+require_text "research/mango/capability-decomposition-2026-05.md" "Критерии атомарности"
+require_text "research/mango/capability-decomposition-2026-05.md" "Связь с НФТ-классами"
+require_text "research/mango/capability-decomposition-2026-05.md" "Интеграция с"
+require_text "research/mango/capability-decomposition-2026-05.md" "Как обновлять справочник"
+require_text "research/mango/capability-decomposition-2026-05.md" "Вопросы для согласования с PO/Founder"
+require_text "research/mango/capability-decomposition-2026-05.md" "Domain: voice-ucaas"
+require_text "research/mango/capability-decomposition-2026-05.md" "Domain: contact-center"
+require_text "research/mango/capability-decomposition-2026-05.md" "Domain: digital-channels"
 
 require_text "projects/README.md" "status: canonical"
 require_text "projects/README.md" "mango/"
