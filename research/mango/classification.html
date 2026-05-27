@@ -84,9 +84,66 @@
   <main>
     <article>
 <h1>Классификация IT/Telecom SaaS-продуктов MANGO OFFICE</h1>
-<p>Версия: 2</p>
+<p>Версия: 3.0</p>
 <p>Дата среза: 22 мая 2026 г.</p>
 <p>Цель документа: зафиксировать рабочую международную и российскую классификацию продуктов и сервисов MANGO OFFICE, чтобы бизнес-аналитик мог сравнивать входящие требования с эталонным каталогом, международными фреймворками, российскими классификаторами, ГОСТ и ключевыми нормативными требованиями для IT/Telecom-операторов.</p>
+<h2>Связанные документы</h2>
+<ul>
+<li>Термины уровней классификации (Domain, Capability, Feature, Atomic Function) и правила их применения описаны в глоссарии <a href="../../projects/mango/standards/classification-glossary.md">projects/mango/standards/classification-glossary.md</a>. Этот файл — нормализованный продуктовый каталог; единая терминология берётся из глоссария.</li>
+<li>«Зеркало спроса» — корпус из 30 ТЗ и проверка эталона на нём — ведётся отдельно в <a href="classification-tz.md">classification-tz.md</a>. Сырой спрос не интегрируется в этот файл; сюда переносятся только нормализованные продуктовые классы (см. §«Что нового в версии 3.0»).</li>
+</ul>
+<h2>Что нового в версии 3.0</h2>
+<p>Версия 3.0 — аддитивное расширение версии 2: ни одна из 37 существующих строк классификации и ни один существующий раздел не удалены, они только переструктурированы под новую модель и дополнены.</p>
+<ol>
+<li>Введена иерархия из четырёх уровней <code class="notranslate">Domain → Capability → Feature → Atomic Function</code> (см. §«Модель классификации v3.0»).</li>
+<li>Продуктовые и закупочные атрибуты явно разделены на два слоя: <code class="notranslate">## 📊 Product Layer</code> (функциональная иерархия) и <code class="notranslate">## 🛒 Commercial Layer</code> (закупочные атрибуты), связанные механизмом <code class="notranslate">related_commercial_fields</code>.</li>
+<li>Добавлены 5 новых <code class="notranslate">Capability</code> по итогам анализа корпуса ТЗ (строки 38–42): маркировка номера и «карусельные номера», голосовые SMS, Self-Service портал, мобильное приложение оператора, услуги поддержки и развития CRM/SaaS.</li>
+<li>Раздел <code class="notranslate">## 🚀 Возможные улучшения (не активны в v3.0)</code> фиксирует отложенные атрибуты (R2.6–R2.8) с обоснованием и критериями активации; в основную модель они не входят.</li>
+<li>Сравнительная таблица международной классификации дополнена колонками <code class="notranslate">Domain → Capability (v3.0)</code> и <code class="notranslate">BABOK</code>, а также строками 38–42.</li>
+</ol>
+<h2>Модель классификации v3.0</h2>
+<p>Классификация v3.0 описывает продукт в двух ортогональных слоях.</p>
+<p><strong>Product Layer (продуктовый слой)</strong> — функциональная иерархия из четырёх уровней:</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Уровень</th>
+<th>Англ. термин</th>
+<th>Что описывает</th>
+<th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Семейство</td>
+<td><code class="notranslate">Domain</code></td>
+<td>Крупная продуктовая область</td>
+<td><code class="notranslate">voice-ucaas</code></td>
+</tr>
+<tr>
+<td>2. Класс</td>
+<td><code class="notranslate">Capability</code></td>
+<td>Группа функций внутри домена</td>
+<td><code class="notranslate">outbound-calling</code></td>
+</tr>
+<tr>
+<td>3. Подкласс</td>
+<td><code class="notranslate">Feature</code></td>
+<td>Настраиваемая возможность класса</td>
+<td><code class="notranslate">campaign-management</code></td>
+</tr>
+<tr>
+<td>4. Функция</td>
+<td><code class="notranslate">Atomic Function</code></td>
+<td>Минимальная единица с параметрами</td>
+<td><code class="notranslate">predictive-dialing</code> (params: dial_ratio, abandon_rate_limit)</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>Пилот покрывает семь доменов: <code class="notranslate">voice-ucaas</code>, <code class="notranslate">contact-center</code>, <code class="notranslate">digital-channels</code>, <code class="notranslate">ai-automation</code>, <code class="notranslate">analytics</code>, <code class="notranslate">hardware</code>, <code class="notranslate">security</code>. Возможности, не привязанные к одному домену (интеграции, API, CPaaS, service desk, vendor-услуги), вынесены в отдельный блок «Кросс-доменные возможности (platform)».</p>
+<p><strong>Commercial Layer (закупочный слой)</strong> — атрибуты, описывающие не функцию, а условия закупки, лицензирования и поставки (тариф, срок договора, лицензионная модель, формат закупки, сертификаты/реестры, квалификация поставщика, конфиденциальность). Эти атрибуты не входят в продуктовую иерархию.</p>
+<p><strong>Механизм связывания.</strong> Каждая <code class="notranslate">Capability</code> в Product Layer содержит поле <code class="notranslate">related_commercial_fields</code> — список идентификаторов закупочных полей из Commercial Layer, которые обычно сопровождают требования к этому классу. Обратное соответствие (закупочное поле → классы) приведено в §«🛒 Commercial Layer». Так одно требование получает и продуктовый ключ (<code class="notranslate">Domain → Capability → Feature → Atomic Function</code>), и закупочный контекст, не смешивая «что делает продукт» и «на каких условиях он закупается».</p>
+<p>Все внутренние идентификаторы уровней и полей записываются в <code class="notranslate">lowercase-with-hyphens</code>; имена параметров атомарных функций — в <code class="notranslate">snake_case</code>. В колонке <code class="notranslate">Mango status</code> сохраняются значения версии 2: <strong>Есть</strong>, <strong>Частично</strong>, <strong>Не выявлено</strong>, <strong>Вне SaaS-ядра</strong>. Поле <code class="notranslate">row</code> ссылается на номер строки в §«Сравнительная таблица международной классификации».</p>
 <h2>Краткий вывод</h2>
 <p>Публичный каталог MANGO OFFICE покрывает пять крупных продуктовых семейств:</p>
 <ol>
@@ -101,17 +158,17 @@
 <li><strong>TM Forum Frameworx / Open APIs</strong>: основной отраслевой фреймворк для телеком- и цифровых сервис-провайдеров. Он удобен для внутренней классификации требований через домены Market &amp; Sales, Customer, Product, Service и Resource, а также через жизненный цикл каталога, заказа, обслуживания и эксплуатации.</li>
 <li><strong>UNSPSC</strong>: глобальная товарно-сервисная классификация ООН/UNDP. Она удобна для закупочной, договорной и внешней классификации: к каждому продукту можно присвоить код commodity-класса и связать требование с международной номенклатурой.</li>
 </ul>
-<p>Версия 2 добавляет российский слой классификации:</p>
+<p>Версия 2 добавила российский слой классификации:</p>
 <ul>
 <li><strong>ОКПД 2 / ОКВЭД 2</strong>: российская закупочная и статистическая классификация. Для продуктовых требований основным является ОКПД 2; ОКВЭД 2 полезен только для описания вида деятельности поставщика или оператора.</li>
 <li><strong>ГОСТ и национальные стандарты РФ</strong>: телеком-качество, call-center service quality, ITSM, облачные вычисления, безопасность, персональные данные, AI и качество ПО.</li>
 <li><strong>Нормативные правовые акты РФ</strong>: применяются не как классификатор продукта, а как compliance-слой для требований к связи, передаче данных, телематическим услугам, персональным данным, рекламе и КИИ.</li>
 </ul>
-<p>Рекомендуемая схема для БА: одно требование получает четыре ключа классификации. Первый ключ отвечает на вопрос "какой это продукт MANGO OFFICE"; второй - "какой это домен и capability в телеком/цифровом сервис-провайдере" по TM Forum; третий - "какой это товарно-сервисный класс" по UNSPSC/ОКПД 2; четвертый - "какие российские ГОСТ/НПА нужно учитывать в описании требований, SLA, безопасности и договора".</p>
+<p>Рекомендуемая схема для БА: одно требование получает четыре ключа классификации. Первый ключ отвечает на вопрос "какой это продукт MANGO OFFICE"; второй - "какой это домен и capability в телеком/цифровом сервис-провайдере" по TM Forum; третий - "какой это товарно-сервисный класс" по UNSPSC/ОКПД 2; четвертый - "какие российские ГОСТ/НПА нужно учитывать в описании требований, SLA, безопасности и договора". В версии 3.0 к продуктовым ключам добавляется закупочный слой (см. §«🛒 Commercial Layer»).</p>
 <h2>Методика</h2>
 <ul>
 <li>Источники по продуктам: публичный каталог и страницы продуктов MANGO OFFICE на <code class="notranslate">mango-office.ru</code>.</li>
-<li>Источники по международным стандартам: страницы TM Forum по eTOM, SID и TMF620; официальный обзор UNSPSC от UNDP; публичный экспорт UNSPSC из UNGM.</li>
+<li>Источники по международным стандартам: страницы TM Forum по eTOM, SID и TMF620; официальный обзор UNSPSC от UNDP; публичный экспорт UNSPSC из UNGM; свод знаний BABOK Guide v3 от IIBA для бизнес-аналитической перспективы.</li>
 <li>Источники по российскому слою: национальные стандарты РФ и межгосударственные ГОСТ в области связи, облачных вычислений, ITSM, ИБ, AI, качества ПО и центров обработки вызовов; ОКПД 2/ОКВЭД 2; федеральные законы и постановления Правительства РФ, применимые к услугам связи, передаче данных, телематическим услугам, персональным данным, рекламе и КИИ.</li>
 <li>Статус в колонке MANGO OFFICE:
 <ul>
@@ -125,6 +182,640 @@
 <li>ОКПД 2-коды в версии 2 указаны на уровне классов и подклассов, достаточном для аналитической классификации. Для закупки, договора или бухгалтерского применения код нужно уточнять по актуальной редакции ОК 034-2014.</li>
 <li>ГОСТ и НПА в версии 2 не заменяют юридическую экспертизу. Национальные стандарты обычно применяются добровольно, если их не сделали обязательными договор, техническое задание, отраслевой регламент или ссылка в нормативном акте.</li>
 </ul>
+<h2>📊 Product Layer</h2>
+<p>Функциональная иерархия <code class="notranslate">Domain → Capability → Feature → Atomic Function</code>. Каждый класс снабжён полем <code class="notranslate">related_commercial_fields</code> (связь с §«🛒 Commercial Layer»), значением <code class="notranslate">Mango status</code> и ссылкой <code class="notranslate">row</code> на строку сравнительной таблицы. Это структурированное представление тех же 37 продуктов из версии 2 плюс 5 новых классов (строки 38–42).</p>
+<h3>📦 Domain: voice-ucaas</h3>
+<p><strong>Name</strong>: Телефония и унифицированные коммуникации</p>
+<h4>🔹 Capability: cloud-pbx (Виртуальная / облачная АТС)</h4>
+<ul>
+<li><strong>Features</strong>: extension-management, call-routing-rules, working-hours-schedule, voicemail</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">extension-provisioning</code> (params: extension_range, sip_profile)</li>
+<li><code class="notranslate">auto-attendant</code> (params: greeting_set, routing_tree)</li>
+<li><code class="notranslate">working-hours-routing</code> (params: schedule_id, holiday_calendar)</li>
+<li><code class="notranslate">voicemail-to-email</code> (params: mailbox_id, delivery_format)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, license-model, procurement-format</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 1</li>
+</ul>
+<h4>🔹 Capability: sip-connectivity (IP-телефония и SIP trunk)</h4>
+<ul>
+<li><strong>Features</strong>: sip-trunking, codec-negotiation, failover-routing</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">sip-trunk-registration</code> (params: trunk_id, auth_credentials)</li>
+<li><code class="notranslate">codec-selection</code> (params: codec_priority, dtmf_mode)</li>
+<li><code class="notranslate">trunk-failover</code> (params: backup_trunk_id, retry_interval)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, contract-duration</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 2</li>
+</ul>
+<h4>🔹 Capability: number-management (Номерная ёмкость)</h4>
+<ul>
+<li><strong>Features</strong>: virtual-numbers, toll-free-8800, mobile-numbers, number-porting</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">number-assignment</code> (params: number_type, region_code)</li>
+<li><code class="notranslate">number-porting</code> (params: donor_operator, port_window)</li>
+<li><code class="notranslate">tollfree-routing</code> (params: number_8800, destination_map)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, certification-registry</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 3</li>
+</ul>
+<h4>🔹 Capability: ivr-voice-menu (Голосовое меню IVR и автоинформирование)</h4>
+<ul>
+<li><strong>Features</strong>: ivr-scenarios, auto-secretary, voice-announcement</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">ivr-menu-navigation</code> (params: menu_tree, timeout_action)</li>
+<li><code class="notranslate">auto-secretary-greeting</code> (params: greeting_id, dtmf_map)</li>
+<li><code class="notranslate">service-availability-routing</code> (params: queue_id, overflow_target)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 4</li>
+</ul>
+<h4>🔹 Capability: call-recording (Запись разговоров и журналирование)</h4>
+<ul>
+<li><strong>Features</strong>: call-recording, call-log, usage-statistics</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">call-recording-capture</code> (params: retention_period, storage_target)</li>
+<li><code class="notranslate">call-log-export</code> (params: date_range, export_format)</li>
+<li><code class="notranslate">recording-access-control</code> (params: role_id, masking_policy)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: confidentiality-terms, certification-registry</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 6</li>
+</ul>
+<h4>🔹 Capability: callback (Обратный звонок с сайта)</h4>
+<ul>
+<li><strong>Features</strong>: web-callback-widget, consent-capture, callback-scheduling</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">callback-request-intake</code> (params: widget_id, consent_flag)</li>
+<li><code class="notranslate">callback-scheduling</code> (params: max_attempts, time_window)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 7</li>
+</ul>
+<h4>🔹 Capability: unified-communications (Корпоративный мессенджер и softphone — Mango Talker)</h4>
+<ul>
+<li><strong>Features</strong>: softphone, corporate-messaging, presence-status</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">softphone-call</code> (params: device_id, sip_account)</li>
+<li><code class="notranslate">corporate-chat</code> (params: channel_id, retention_period)</li>
+<li><code class="notranslate">presence-update</code> (params: status_code, visibility_scope)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, tariff-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 8</li>
+</ul>
+<h4>🔹 Capability: video-conferencing (Видеоконференции)</h4>
+<ul>
+<li><strong>Features</strong>: video-meetings, meeting-recording, screen-sharing</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">meeting-host</code> (params: max_participants, meeting_id)</li>
+<li><code class="notranslate">meeting-recording</code> (params: retention_period, consent_flag)</li>
+<li><code class="notranslate">screen-share</code> (params: session_id, quality_profile)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, tariff-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 9</li>
+</ul>
+<h4>🔹 Capability: number-branding (Маркировка номера, «карусельные номера», защита дозваниваемости) — R2.1, новый</h4>
+<ul>
+<li><strong>Features</strong>: number-labeling, carousel-numbers, reachability-protection, anti-spam-marking</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">caller-id-labeling</code> (params: brand_label, aggregator_id)</li>
+<li><code class="notranslate">carousel-number-rotation</code> (params: number_pool, rotation_policy)</li>
+<li><code class="notranslate">reachability-monitoring</code> (params: spam_score_threshold, alert_channel)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, certification-registry, procurement-format</li>
+<li><strong>Mango status</strong>: Не выявлено · <strong>row</strong>: 38</li>
+</ul>
+<h4>🔹 Capability: voice-sms-broadcast (Голосовые SMS / автоинформирование через голосовой канал) — R2.2, новый</h4>
+<ul>
+<li><strong>Features</strong>: voice-broadcast, auto-notification, delivery-confirmation</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">voice-message-broadcast</code> (params: contact_list, voice_template)</li>
+<li><code class="notranslate">delivery-confirmation</code> (params: dtmf_confirm, retry_policy)</li>
+<li><code class="notranslate">consent-filter</code> (params: opt_in_list, advertising_flag)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Частично · <strong>row</strong>: 39</li>
+</ul>
+<h3>📦 Domain: contact-center</h3>
+<p><strong>Name</strong>: Контакт-центр и CCaaS</p>
+<h4>🔹 Capability: call-routing (Распределение звонков, очереди, маршрутизация)</h4>
+<ul>
+<li><strong>Features</strong>: skill-based-routing, queue-management, overflow-rules</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">skill-based-routing</code> (params: skill_group, priority_weight)</li>
+<li><code class="notranslate">queue-management</code> (params: max_wait_time, sla_threshold)</li>
+<li><code class="notranslate">overflow-routing</code> (params: overflow_target, abandon_threshold)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 5</li>
+</ul>
+<h4>🔹 Capability: omnichannel-contact-center (Омниканальный контакт-центр / CCaaS)</h4>
+<ul>
+<li><strong>Features</strong>: inbound-handling, omnichannel-desktop, channel-blending</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">interaction-routing</code> (params: channel_type, routing_profile)</li>
+<li><code class="notranslate">unified-agent-desktop</code> (params: layout_id, channel_set)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, license-model, procurement-format</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 11</li>
+</ul>
+<h4>🔹 Capability: agent-workspace (Входящие обращения и рабочее место оператора)</h4>
+<ul>
+<li><strong>Features</strong>: agent-desktop, customer-card, interaction-history</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">interaction-handling</code> (params: interaction_id, disposition_code)</li>
+<li><code class="notranslate">customer-card-popup</code> (params: crm_lookup_key, screen_pop_layout)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 12</li>
+</ul>
+<h4>🔹 Capability: outbound-calling (Исходящий обзвон и кампании)</h4>
+<ul>
+<li><strong>Features</strong>: campaign-management, dialing-modes, realtime-analytics, historical-reports</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">predictive-dialing</code> (params: dial_ratio, abandon_rate_limit)</li>
+<li><code class="notranslate">callback-scheduling</code> (params: max_attempts, time_window)</li>
+<li><code class="notranslate">disposition-code-assignment</code> (params: code_list, auto_tagging)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, procurement-format</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 13</li>
+</ul>
+<h4>🔹 Capability: quality-management (Управление качеством операторов / QM)</h4>
+<ul>
+<li><strong>Features</strong>: scorecards, call-sampling, evaluation-workflow</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">scorecard-evaluation</code> (params: checklist_id, sampling_rate)</li>
+<li><code class="notranslate">evaluation-appeal</code> (params: case_id, reviewer_role)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 20</li>
+</ul>
+<h4>🔹 Capability: workforce-management (WFM / управление рабочими ресурсами)</h4>
+<ul>
+<li><strong>Features</strong>: shift-scheduling, load-forecasting, adherence-tracking</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">load-forecasting</code> (params: history_window, forecast_horizon)</li>
+<li><code class="notranslate">shift-scheduling</code> (params: agent_pool, coverage_target)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 21</li>
+</ul>
+<h4>🔹 Capability: knowledge-base (База знаний и скрипты операторов)</h4>
+<ul>
+<li><strong>Features</strong>: knowledge-articles, agent-scripts, version-control</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">article-lifecycle</code> (params: article_id, review_status)</li>
+<li><code class="notranslate">script-guidance</code> (params: scenario_id, branching_rules)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 22</li>
+</ul>
+<h4>🔹 Capability: deal-management (Управление сделками / лёгкий CRM-сценарий)</h4>
+<ul>
+<li><strong>Features</strong>: deal-pipeline, contact-management, communication-history</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">deal-pipeline-tracking</code> (params: pipeline_id, stage_map)</li>
+<li><code class="notranslate">communication-logging</code> (params: contact_id, channel_type)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 23</li>
+</ul>
+<h4>🔹 Capability: crm-platform (Полноценная CRM как самостоятельная платформа)</h4>
+<ul>
+<li><strong>Features</strong>: crm-core, sales-automation</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">crm-record-management</code> (params: entity_type, field_schema)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, contract-duration</li>
+<li><strong>Mango status</strong>: Частично · <strong>row</strong>: 24</li>
+</ul>
+<h4>🔹 Capability: self-service-portal (Self-Service портал клиента / личный кабинет заказчика) — R2.3, новый</h4>
+<ul>
+<li><strong>Features</strong>: customer-portal, self-onboarding, recording-access, service-catalog-selection</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">self-service-login</code> (params: account_id, auth_method)</li>
+<li><code class="notranslate">service-self-provisioning</code> (params: catalog_item, approval_flow)</li>
+<li><code class="notranslate">self-service-recording-access</code> (params: masking_policy, retention_period)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms, certification-registry</li>
+<li><strong>Mango status</strong>: Частично · <strong>row</strong>: 40</li>
+</ul>
+<h4>🔹 Capability: operator-mobile-app (Мобильное приложение оператора CCaaS) — R2.4, новый</h4>
+<ul>
+<li><strong>Features</strong>: mobile-agent-desktop, push-notifications, offline-mode</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">mobile-interaction-handling</code> (params: device_id, channel_set)</li>
+<li><code class="notranslate">push-notification-delivery</code> (params: notification_type, priority)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, tariff-model</li>
+<li><strong>Mango status</strong>: Частично · <strong>row</strong>: 41</li>
+</ul>
+<h3>📦 Domain: digital-channels</h3>
+<p><strong>Name</strong>: Цифровые каналы и коммуникации</p>
+<h4>🔹 Capability: sms-messaging (SMS-рассылки)</h4>
+<ul>
+<li><strong>Features</strong>: bulk-sms, transactional-sms, opt-out-management</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">bulk-sms-dispatch</code> (params: contact_list, message_template)</li>
+<li><code class="notranslate">opt-out-handling</code> (params: stop_keyword, suppression_list)</li>
+<li><code class="notranslate">advertising-consent-check</code> (params: consent_source, advertising_flag)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 10</li>
+</ul>
+<h4>🔹 Capability: omnichannel-messaging (Омниканальные коммуникации: чат, мессенджеры, соцсети, email)</h4>
+<ul>
+<li><strong>Features</strong>: messenger-integration, social-channels, email-channel, unified-inbox</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">channel-ingestion</code> (params: channel_type, account_credentials)</li>
+<li><code class="notranslate">unified-inbox-routing</code> (params: inbox_id, routing_rules)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 14</li>
+</ul>
+<h4>🔹 Capability: website-chat (Чат для сайта)</h4>
+<ul>
+<li><strong>Features</strong>: chat-widget, proactive-invitations, visitor-tracking</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">chat-widget-embed</code> (params: widget_id, trigger_rules)</li>
+<li><code class="notranslate">visitor-data-capture</code> (params: consent_flag, field_set)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 15</li>
+</ul>
+<h4>🔹 Capability: messenger-marketing (Мессенджер-маркетинг)</h4>
+<ul>
+<li><strong>Features</strong>: campaign-templates, broadcast-lists, opt-in-management</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">messenger-campaign-dispatch</code> (params: template_id, audience_segment)</li>
+<li><code class="notranslate">messenger-optin-management</code> (params: optin_source, suppression_list)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 33</li>
+</ul>
+<h3>📦 Domain: ai-automation</h3>
+<p><strong>Name</strong>: AI и автоматизация</p>
+<h4>🔹 Capability: chatbot (Чат-бот)</h4>
+<ul>
+<li><strong>Features</strong>: dialog-scenarios, intent-recognition, agent-handoff</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">intent-classification</code> (params: model_id, confidence_threshold)</li>
+<li><code class="notranslate">agent-handoff</code> (params: fallback_queue, context_payload)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, certification-registry</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 16</li>
+</ul>
+<h4>🔹 Capability: voice-bot (Голосовой робот / voice bot)</h4>
+<ul>
+<li><strong>Features</strong>: speech-recognition, dialog-orchestration, tts-synthesis</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">speech-to-text</code> (params: language_model, confidence_threshold)</li>
+<li><code class="notranslate">voice-dialog-flow</code> (params: scenario_id, fallback_action)</li>
+<li><code class="notranslate">text-to-speech</code> (params: voice_profile, prosody_settings)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, certification-registry</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 17</li>
+</ul>
+<h4>🔹 Capability: process-robot (Робот-администратор)</h4>
+<ul>
+<li><strong>Features</strong>: process-automation, action-orchestration, audit-logging</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">automated-action-execution</code> (params: process_id, permission_scope)</li>
+<li><code class="notranslate">action-audit-logging</code> (params: log_target, event_filter)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 18</li>
+</ul>
+<h4>🔹 Capability: speech-analytics (Речевая аналитика / conversation intelligence)</h4>
+<ul>
+<li><strong>Features</strong>: transcription, sentiment-analysis, keyword-detection</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">call-transcription</code> (params: language_model, diarization_flag)</li>
+<li><code class="notranslate">keyword-spotting</code> (params: keyword_set, alert_rule)</li>
+<li><code class="notranslate">sentiment-scoring</code> (params: model_id, score_scale)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 19</li>
+</ul>
+<h3>📦 Domain: analytics</h3>
+<p><strong>Name</strong>: Маркетинговая и бизнес-аналитика</p>
+<h4>🔹 Capability: call-tracking (Коллтрекинг)</h4>
+<ul>
+<li><strong>Features</strong>: dynamic-number-pool, source-attribution, call-analytics</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">dynamic-number-substitution</code> (params: number_pool, session_ttl)</li>
+<li><code class="notranslate">source-attribution</code> (params: utm_map, attribution_window)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 27</li>
+</ul>
+<h4>🔹 Capability: end-to-end-analytics (Сквозная аналитика и ROMI)</h4>
+<ul>
+<li><strong>Features</strong>: revenue-attribution, romi-calculation, funnel-analysis</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">romi-calculation</code> (params: cost_source, revenue_source)</li>
+<li><code class="notranslate">funnel-tracking</code> (params: stage_map, conversion_window)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 28</li>
+</ul>
+<h4>🔹 Capability: multichannel-analytics (Мультиканальная аналитика и атрибуция)</h4>
+<ul>
+<li><strong>Features</strong>: channel-attribution, deduplication, conversion-tracking</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">attribution-modeling</code> (params: model_type, lookback_window)</li>
+<li><code class="notranslate">lead-deduplication</code> (params: match_keys, merge_policy)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 29</li>
+</ul>
+<h4>🔹 Capability: email-tracking (Email-трекинг)</h4>
+<ul>
+<li><strong>Features</strong>: open-tracking, click-tracking, unsubscribe-management</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">email-event-tracking</code> (params: tracking_pixel, event_type)</li>
+<li><code class="notranslate">unsubscribe-handling</code> (params: list_id, suppression_policy)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 30</li>
+</ul>
+<h4>🔹 Capability: product-analytics (Товарная аналитика / ecommerce analytics)</h4>
+<ul>
+<li><strong>Features</strong>: demand-analysis, sku-performance, data-quality</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">sku-performance-analysis</code> (params: catalog_source, metric_set)</li>
+<li><code class="notranslate">data-quality-check</code> (params: quality_rules, threshold)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 31</li>
+</ul>
+<h4>🔹 Capability: competitor-analysis (Анализ конкурентов)</h4>
+<ul>
+<li><strong>Features</strong>: market-monitoring, benchmark-reports</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">competitor-data-collection</code> (params: source_list, refresh_interval)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 32</li>
+</ul>
+<h3>📦 Domain: hardware</h3>
+<p><strong>Name</strong>: Оборудование</p>
+<h4>🔹 Capability: telephony-equipment (SIP-телефоны, гарнитуры и устройства)</h4>
+<ul>
+<li><strong>Features</strong>: sip-phones, headsets, accessories</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">device-provisioning</code> (params: device_model, firmware_version)</li>
+<li><code class="notranslate">device-compatibility-check</code> (params: sip_profile, certification_id)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: procurement-format, certification-registry, contract-duration</li>
+<li><strong>Mango status</strong>: Вне SaaS-ядра · <strong>row</strong>: 37</li>
+</ul>
+<h3>📦 Domain: security</h3>
+<p><strong>Name</strong>: Безопасность и доверие</p>
+<h4>🔹 Capability: information-security (Информационная безопасность)</h4>
+<ul>
+<li><strong>Features</strong>: access-control, audit-logging, data-classification, incident-management</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">role-based-access-control</code> (params: role_id, permission_scope)</li>
+<li><code class="notranslate">security-audit-logging</code> (params: log_target, retention_period)</li>
+<li><code class="notranslate">data-classification</code> (params: sensitivity_label, handling_policy)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: certification-registry, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть (сквозной слой) · <strong>row</strong>: 36</li>
+</ul>
+<h3>🧩 Кросс-доменные возможности (platform)</h3>
+<p>Классы, не привязанные к одному домену: интеграционная платформа и vendor-услуги поддерживают все семь доменов.</p>
+<h4>🔹 Capability: platform-integration (Интеграции с CRM, 1C, LDAP, marketplace)</h4>
+<ul>
+<li><strong>Features</strong>: crm-connectors, erp-connectors, directory-sync, marketplace-apps</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">crm-bidirectional-sync</code> (params: connector_id, sync_interval)</li>
+<li><code class="notranslate">directory-sync</code> (params: ldap_endpoint, attribute_map)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, confidentiality-terms</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 25</li>
+</ul>
+<h4>🔹 Capability: open-api (Open API, webhook, API для УВК/CRM)</h4>
+<ul>
+<li><strong>Features</strong>: rest-api, webhooks, event-streaming</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">webhook-subscription</code> (params: event_type, callback_url)</li>
+<li><code class="notranslate">api-rate-limiting</code> (params: rate_limit, quota_window)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, certification-registry</li>
+<li><strong>Mango status</strong>: Есть · <strong>row</strong>: 26</li>
+</ul>
+<h4>🔹 Capability: cpaas (CPaaS / программируемые голосовые и messaging API)</h4>
+<ul>
+<li><strong>Features</strong>: programmable-voice, programmable-messaging, number-api</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">programmable-voice-call</code> (params: from_number, callflow_id)</li>
+<li><code class="notranslate">programmable-message-send</code> (params: channel_type, message_payload)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: tariff-model, license-model</li>
+<li><strong>Mango status</strong>: Частично · <strong>row</strong>: 34</li>
+</ul>
+<h4>🔹 Capability: service-desk (Service desk / ITSM helpdesk)</h4>
+<ul>
+<li><strong>Features</strong>: ticketing, incident-management, request-fulfilment</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">ticket-lifecycle</code> (params: ticket_type, sla_policy)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: license-model, contract-duration</li>
+<li><strong>Mango status</strong>: Частично · <strong>row</strong>: 35</li>
+</ul>
+<h4>🔹 Capability: vendor-support-services (Услуги поддержки и развития CRM/SaaS как vendor-service) — R2.5, новый</h4>
+<ul>
+<li><strong>Features</strong>: application-maintenance, crm-development, professional-services</li>
+<li><strong>Atomic Functions</strong>:
+<ul>
+<li><code class="notranslate">application-maintenance</code> (params: sla_tier, support_window)</li>
+<li><code class="notranslate">crm-customization</code> (params: scope_spec, change_request_id)</li>
+</ul>
+</li>
+<li><strong>related_commercial_fields</strong>: contract-duration, license-model, procurement-format, certification-registry</li>
+<li><strong>Mango status</strong>: Не выявлено · <strong>row</strong>: 42</li>
+</ul>
+<h2>🛒 Commercial Layer</h2>
+<p>Закупочный слой описывает условия закупки, лицензирования и поставки, а не функцию продукта. Эти поля <strong>не входят</strong> в продуктовую иерархию Product Layer, но связаны с её классами через <code class="notranslate">related_commercial_fields</code>. Каталог полей нормализует коммерческо-договорные классы C1–C7 и предложенные в <code class="notranslate">classification-tz.md</code> (R3) закупочные поля.</p>
+<h3>Каталог закупочных полей</h3>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Поле (id)</th>
+<th>Назначение</th>
+<th>Примеры значений</th>
+<th>Исток в <code class="notranslate">classification-tz.md</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">tariff-model</code></td>
+<td>Тарифная модель и порядок оплаты</td>
+<td>минута / абонплата / постоплата 60 кд / mixed</td>
+<td>C1; R3 <code class="notranslate">Commercial model</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">contract-duration</code></td>
+<td>Срок договора, пролонгация, расторжение</td>
+<td>12 мес / 24 мес / 36 мес / бессрочно</td>
+<td>C2; R3 <code class="notranslate">Contract duration</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">license-model</code></td>
+<td>Лицензионная и поставочная модель ПО</td>
+<td>SaaS-подписка / неисключительная лицензия / OEM / доработка ПО</td>
+<td>C3; R3 <code class="notranslate">License model</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">procurement-format</code></td>
+<td>Формат закупочной процедуры</td>
+<td>прямой договор / RFI / RFP / single-lot / multi-lot (Лот 1..N)</td>
+<td>C6; R3 <code class="notranslate">Procurement format</code></td>
+</tr>
+<tr>
+<td><code class="notranslate">certification-registry</code></td>
+<td>Сертификаты, лицензии, реестры</td>
+<td>лицензия связи / реестр российского ПО (Минцифры) / ISO 27001 / ФСТЭК</td>
+<td>C4</td>
+</tr>
+<tr>
+<td><code class="notranslate">vendor-qualification</code></td>
+<td>Опыт, кейсы, референсы поставщика</td>
+<td>реализованные проекты / референс-визиты / отраслевые кейсы</td>
+<td>C5</td>
+</tr>
+<tr>
+<td><code class="notranslate">confidentiality-terms</code></td>
+<td>Конфиденциальность, NDA, ответственность сторон</td>
+<td>NDA / коммерческая тайна / ответственность за инциденты</td>
+<td>C7</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<h3>Связь Commercial Layer → Product Layer</h3>
+<p>Обратное соответствие закупочного поля и продуктовых классов, которые на него ссылаются в <code class="notranslate">related_commercial_fields</code>.</p>
+<markdown-accessiblity-table><table role="table">
+<thead>
+<tr>
+<th>Закупочное поле</th>
+<th>Связанные Capability (Product Layer)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="notranslate">tariff-model</code></td>
+<td>cloud-pbx, sip-connectivity, number-management, ivr-voice-menu, callback, unified-communications, video-conferencing, number-branding, voice-sms-broadcast, call-routing, omnichannel-contact-center, outbound-calling, operator-mobile-app, sms-messaging, omnichannel-messaging, messenger-marketing, call-tracking, cpaas</td>
+</tr>
+<tr>
+<td><code class="notranslate">contract-duration</code></td>
+<td>sip-connectivity, crm-platform, telephony-equipment, service-desk, vendor-support-services</td>
+</tr>
+<tr>
+<td><code class="notranslate">license-model</code></td>
+<td>cloud-pbx, ivr-voice-menu, unified-communications, video-conferencing, call-routing, omnichannel-contact-center, agent-workspace, quality-management, workforce-management, knowledge-base, deal-management, crm-platform, self-service-portal, operator-mobile-app, omnichannel-messaging, website-chat, chatbot, voice-bot, process-robot, speech-analytics, end-to-end-analytics, multichannel-analytics, email-tracking, product-analytics, competitor-analysis, platform-integration, open-api, cpaas, service-desk, vendor-support-services</td>
+</tr>
+<tr>
+<td><code class="notranslate">procurement-format</code></td>
+<td>cloud-pbx, number-branding, omnichannel-contact-center, outbound-calling, telephony-equipment, vendor-support-services</td>
+</tr>
+<tr>
+<td><code class="notranslate">certification-registry</code></td>
+<td>number-management, call-recording, number-branding, self-service-portal, chatbot, voice-bot, open-api, telephony-equipment, information-security, vendor-support-services</td>
+</tr>
+<tr>
+<td><code class="notranslate">vendor-qualification</code></td>
+<td>применяется к любому требованию на уровне закупочной квалификации поставщика (не привязано к одному классу)</td>
+</tr>
+<tr>
+<td><code class="notranslate">confidentiality-terms</code></td>
+<td>call-recording, callback, voice-sms-broadcast, agent-workspace, workforce-management, deal-management, self-service-portal, sms-messaging, website-chat, messenger-marketing, speech-analytics, call-tracking, end-to-end-analytics, email-tracking, platform-integration, information-security</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<p>Практическое правило: продуктовый ключ (<code class="notranslate">Domain → Capability → Feature → Atomic Function</code>) и закупочный ключ заполняются независимо. Если требование описывает только коммерческие условия (например, закупочная процедура без функциональных требований), оно получает значения Commercial Layer без обязательной привязки к Capability — это явный сигнал «сравнивать только на закупочном уровне».</p>
 <h2>Анализ публичного каталога MANGO OFFICE</h2>
 <markdown-accessiblity-table><table role="table">
 <thead>
@@ -186,6 +877,11 @@
 <td>UNSPSC</td>
 <td>Международная иерархическая классификация продуктов и услуг. Хорошо подходит для внешнего сравнения, закупки и кодирования требований.</td>
 <td>Выбран как второй стандарт</td>
+</tr>
+<tr>
+<td>BABOK Guide v3 (IIBA)</td>
+<td>Свод знаний по бизнес-анализу: области знаний (Strategy Analysis, Requirements Analysis and Design Definition, Solution Evaluation) и техники (Process Modelling, Interface Analysis, Non-Functional Requirements Analysis, Decision Modelling, Metrics and KPIs, Vendor Assessment). Не классифицирует продукт, но указывает, какой аналитической техникой эффективнее всего выявлять и анализировать требование к данному классу.</td>
+<td>Добавлен в версию 3.0 как бизнес-аналитическая перспектива в сравнительной таблице</td>
 </tr>
 <tr>
 <td>ОКПД 2 / ОКВЭД 2</td>
@@ -309,6 +1005,14 @@
 <li>функциональный код, например <strong>43232903 Contact center software</strong>, <strong>43232303 Customer relationship management CRM software</strong>, <strong>83111510 Interactive voice response service</strong> или <strong>80141501 Marketing analysis</strong>.</li>
 </ul>
 <p>Такой двойной подход уменьшает неоднозначность: требование "голосовой робот" является SaaS-сервисом, но функционально ближе к IVR, voice recognition и контакт-центру.</p>
+<h3>BABOK Guide v3 (IIBA)</h3>
+<p>BABOK не классифицирует продукт, а отвечает на вопрос «как бизнес-аналитику работать с требованием к данному классу». В сравнительной таблице к каждой строке указана область знаний BABOK и наиболее релевантная техника:</p>
+<ul>
+<li><strong>Strategy Analysis</strong> — для требований уровня выбора поставщика, импортозамещения и vendor-услуг (техники Vendor Assessment, Benchmarking and Market Analysis, Risk Analysis).</li>
+<li><strong>Requirements Analysis and Design Definition (RADD)</strong> — для функциональных классов (Process Modelling, Interface Analysis, Decision Modelling, Business Rules Analysis, Data Modelling, Non-Functional Requirements Analysis, Prototyping).</li>
+<li><strong>Solution Evaluation</strong> — для аналитических и метрических классов (Metrics and KPIs), а также для приёмки оборудования.</li>
+</ul>
+<p>BABOK применяется как процессно-аналитический слой поверх продуктового: он не заменяет TM Forum/UNSPSC, а подсказывает технику выявления и проверки требования.</p>
 <h3>Российский слой</h3>
 <p>Российский слой применяется не одним универсальным кодом, а связкой из трех типов ссылок:</p>
 <ul>
@@ -318,279 +1022,402 @@
 </ul>
 <p>Практическое правило: в user story или ФТ достаточно указать российский слой на уровне "применимые стандарты/НПА". Точные юридические формулировки, лицензии, обязательность ГОСТ и финальные ОКПД 2-коды фиксируются в договоре, ТЗ или закупочной документации.</p>
 <h2>Сравнительная таблица международной классификации</h2>
+<p>Колонки <code class="notranslate">Domain → Capability (v3.0)</code> и <code class="notranslate">BABOK</code> добавлены в версии 3.0. Строки 1–37 сохранены без изменений по содержанию; строки 38–42 — новые классы из анализа корпуса ТЗ (R2.1–R2.5).</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
 <th align="right">№</th>
 <th>Продукт/сервис</th>
+<th>Domain → Capability (v3.0)</th>
 <th>MANGO OFFICE: есть/нет</th>
 <th>Стандарт 1: TM Forum Frameworx / Open APIs (обоснование)</th>
 <th>Стандарт 2: UNSPSC (обоснование)</th>
+<th>Перспектива BABOK (область знаний / техника)</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td align="right">1</td>
 <td>Виртуальная АТС / облачная телефония</td>
+<td>voice-ucaas → cloud-pbx</td>
 <td>Есть</td>
 <td>Product Offering в Product domain; Service domain для голосового сервиса; Resource domain для номеров, линий и правил маршрутизации.</td>
 <td>81162000 Cloud-based software as a service + 83111500 Local and long distance telephone communications.</td>
+<td>RADD: Functional Decomposition + Non-Functional Requirements Analysis (доступность, SLA)</td>
 </tr>
 <tr>
 <td align="right">2</td>
 <td>IP-телефония и SIP trunk</td>
+<td>voice-ucaas → sip-connectivity</td>
 <td>Есть</td>
 <td>Service/Resource: логический голосовой сервис поверх SIP-ресурсов; удобно отделять заказ продукта от ресурсов подключения.</td>
 <td>83111500 Local and long distance telephone communications; 43232901 Access software или 43232915 Platform interconnectivity software для софтверной части.</td>
+<td>RADD: Interface Analysis (SIP-интерфейсы и подключение)</td>
 </tr>
 <tr>
 <td align="right">3</td>
 <td>Виртуальные номера, 8-800, мобильные номера</td>
+<td>voice-ucaas → number-management</td>
 <td>Есть</td>
 <td>Resource domain: номерная емкость как ресурс, привязанный к продукту ВАТС или контакт-центру.</td>
 <td>83111501 Local telephone service, 83111502 Long distance telephone services, 83111603 Cellular telephone services.</td>
+<td>RADD: Business Rules Analysis (правила номерной ёмкости) + Data Modelling</td>
 </tr>
 <tr>
 <td align="right">4</td>
 <td>Голосовое меню IVR, автосекретарь, автоинформатор</td>
+<td>voice-ucaas → ivr-voice-menu</td>
 <td>Есть</td>
 <td>Service capability внутри голосового сервиса; требования относятся к service specification, routing и customer interaction.</td>
 <td>83111510 Interactive voice response service + 43232703 Interactive voice response software.</td>
+<td>RADD: Process Modelling (IVR-сценарии) + Decision Modelling</td>
 </tr>
 <tr>
 <td align="right">5</td>
 <td>Распределение звонков, очереди, правила маршрутизации</td>
+<td>contact-center → call-routing</td>
 <td>Есть</td>
 <td>Customer/Service: управление взаимодействием и исполнением сервиса; для требований важны SLA, skill groups и правила маршрутизации.</td>
 <td>43232903 Contact center software или 43231501 Helpdesk or call center software.</td>
+<td>RADD: Business Rules Analysis (маршрутизация) + NFR Analysis (SLA очередей)</td>
 </tr>
 <tr>
 <td align="right">6</td>
 <td>Запись разговоров, журнал звонков, статистика</td>
+<td>voice-ucaas → call-recording</td>
 <td>Есть</td>
 <td>Service assurance и usage: фиксация использования сервиса, контроль качества и доказательная база для обращений.</td>
 <td>43232300 Data management and query software + 43232605 Analytical or scientific software.</td>
+<td>RADD: NFR Analysis (хранение, ИБ) + Data Modelling</td>
 </tr>
 <tr>
 <td align="right">7</td>
 <td>Обратный звонок с сайта</td>
+<td>voice-ucaas → callback</td>
 <td>Есть</td>
 <td>Market &amp; Sales + Customer interaction: лидогенерация превращается в коммуникацию и заказ обратного вызова.</td>
 <td>80141603 Telemarketing + 83111500 Telephone communications.</td>
+<td>Elicitation: Use Cases and Scenarios + RADD: Process Modelling</td>
 </tr>
 <tr>
 <td align="right">8</td>
 <td>Mango Talker: корпоративный мессенджер и softphone</td>
+<td>voice-ucaas → unified-communications</td>
 <td>Есть</td>
 <td>Customer interaction и Service: единое рабочее пространство коммуникаций; Resource - пользовательские endpoint-устройства и приложения.</td>
 <td>43232702 Desktop communications software + 43223204 Unified messaging platform.</td>
+<td>RADD: Functional Decomposition + Interface Analysis</td>
 </tr>
 <tr>
 <td align="right">9</td>
 <td>Видеоконференции</td>
+<td>voice-ucaas → video-conferencing</td>
 <td>Есть</td>
 <td>Service domain для UCaaS-сервиса; Product domain для опции или отдельного предложения в каталоге.</td>
 <td>43233502 Video conferencing software + 81162000 Cloud-based software as a service.</td>
+<td>RADD: Non-Functional Requirements Analysis (качество медиа) + Use Cases</td>
 </tr>
 <tr>
 <td align="right">10</td>
 <td>SMS-рассылки</td>
+<td>digital-channels → sms-messaging</td>
 <td>Есть</td>
 <td>Customer interaction и Campaign/Market &amp; Sales: массовые уведомления и коммуникации с клиентами.</td>
 <td>43223202 Short message service center + 81161600 Electronic mail and messaging services.</td>
+<td>RADD: Business Rules Analysis (согласия) + NFR Analysis</td>
 </tr>
 <tr>
 <td align="right">11</td>
 <td>Омниканальный контакт-центр / CCaaS</td>
+<td>contact-center → omnichannel-contact-center</td>
 <td>Есть</td>
 <td>Product/Service: отдельное Product Offering с capability обслуживания обращений; Customer domain для клиента и обращения.</td>
 <td>43232903 Contact center software + 43231501 Helpdesk or call center software.</td>
+<td>RADD: Functional Decomposition + Solution Evaluation: Metrics and KPIs</td>
 </tr>
 <tr>
 <td align="right">12</td>
 <td>Входящие обращения, очереди, рабочее место оператора</td>
+<td>contact-center → agent-workspace</td>
 <td>Есть</td>
 <td>Customer interaction и Service assurance: управление обращением, оператором, каналом и SLA.</td>
 <td>43232903 Contact center software.</td>
+<td>RADD: Process Modelling + Prototyping (рабочее место)</td>
 </tr>
 <tr>
 <td align="right">13</td>
 <td>Исходящий обзвон и кампании</td>
+<td>contact-center → outbound-calling</td>
 <td>Есть</td>
 <td>Market &amp; Sales + Customer interaction: outbound-кампания как коммерческое взаимодействие, исполняемое контакт-центром.</td>
 <td>80141603 Telemarketing + 43232903 Contact center software.</td>
+<td>RADD: Process Modelling + Business Rules Analysis (правила кампаний)</td>
 </tr>
 <tr>
 <td align="right">14</td>
 <td>Омниканальные коммуникации: чат, мессенджеры, соцсети, email</td>
+<td>digital-channels → omnichannel-messaging</td>
 <td>Есть</td>
 <td>Customer interaction across channels; полезно классифицировать канал отдельно от бизнес-сценария обращения.</td>
 <td>43223204 Unified messaging platform, 43223205 Instant messaging platform, 81161600 Electronic mail and messaging services.</td>
+<td>RADD: Interface Analysis (каналы) + Process Modelling</td>
 </tr>
 <tr>
 <td align="right">15</td>
 <td>Чат для сайта</td>
+<td>digital-channels → website-chat</td>
 <td>Есть</td>
 <td>Customer interaction: цифровой канал обращения, связанный с контакт-центром и карточкой клиента.</td>
 <td>43233504 Instant messaging software + 81161600 Electronic mail and messaging services.</td>
+<td>Elicitation: Use Cases and Scenarios + RADD: Prototyping</td>
 </tr>
 <tr>
 <td align="right">16</td>
 <td>Чат-бот</td>
+<td>ai-automation → chatbot</td>
 <td>Есть</td>
 <td>Service automation внутри Customer domain; бот исполняет часть interaction flow до передачи оператору.</td>
 <td>43231511 Expert system software + 43223205 Instant messaging platform.</td>
+<td>RADD: Decision Modelling + Use Cases and Scenarios</td>
 </tr>
 <tr>
 <td align="right">17</td>
 <td>Голосовой робот / voice bot</td>
+<td>ai-automation → voice-bot</td>
 <td>Есть</td>
 <td>Service automation для голосового канала; связывает IVR, customer interaction и orchestration сценариев.</td>
 <td>43233413 Voice recognition software + 83111510 Interactive voice response service.</td>
+<td>RADD: Decision Modelling + Process Modelling</td>
 </tr>
 <tr>
 <td align="right">18</td>
 <td>Робот-администратор</td>
+<td>ai-automation → process-robot</td>
 <td>Есть</td>
 <td>Service orchestration: автоматизирует операционные действия контакт-центра и обращения клиента.</td>
 <td>81112106 Application service providers + 43232403 Enterprise application integration software.</td>
+<td>RADD: Process Modelling + Business Rules Analysis</td>
 </tr>
 <tr>
 <td align="right">19</td>
 <td>Речевая аналитика / conversation intelligence</td>
+<td>ai-automation → speech-analytics</td>
 <td>Есть</td>
 <td>Service assurance и Customer insight: анализ записей, транскриптов и качества коммуникаций.</td>
 <td>43233413 Voice recognition software + 43232605 Analytical or scientific software.</td>
+<td>Solution Evaluation: Metrics and KPIs + Data Modelling</td>
 </tr>
 <tr>
 <td align="right">20</td>
 <td>Управление качеством операторов (QM)</td>
+<td>contact-center → quality-management</td>
 <td>Есть</td>
 <td>Service assurance: контроль качества, чек-листы, оценки и обратная связь по обслуживанию.</td>
 <td>43232606 Compliance software + 43231501 Helpdesk or call center software.</td>
+<td>Solution Evaluation: Metrics and KPIs + Business Rules Analysis (чек-листы)</td>
 </tr>
 <tr>
 <td align="right">21</td>
 <td>Workforce Management / управление рабочими ресурсами</td>
+<td>contact-center → workforce-management</td>
 <td>Есть</td>
 <td>Resource/Enterprise management: планирование операторов как ресурса сервиса контакт-центра.</td>
 <td>43231505 Human resources software + 43232903 Contact center software.</td>
+<td>Strategy Analysis: прогноз ресурса + RADD: Process Modelling</td>
 </tr>
 <tr>
 <td align="right">22</td>
 <td>База знаний и скрипты операторов</td>
+<td>contact-center → knowledge-base</td>
 <td>Есть</td>
 <td>Customer/Service support: knowledge artifacts поддерживают выполнение service interaction.</td>
 <td>43232200 Content management software + 43232201 Content workflow software.</td>
+<td>RADD: Data Modelling + Document Analysis</td>
 </tr>
 <tr>
 <td align="right">23</td>
 <td>Управление сделками / легкий CRM-сценарий</td>
+<td>contact-center → deal-management</td>
 <td>Есть</td>
 <td>Customer + Market &amp; Sales: связка клиента, сделки, коммуникации и коммерческого процесса.</td>
 <td>43232303 Customer relationship management CRM software.</td>
+<td>RADD: Data Modelling + Process Modelling</td>
 </tr>
 <tr>
 <td align="right">24</td>
 <td>Полноценная CRM как самостоятельная платформа</td>
+<td>contact-center → crm-platform</td>
 <td>Частично</td>
 <td>TM Forum классифицирует как Customer/Sales capability, но в MANGO OFFICE публично виден скорее встроенный сценарий управления сделками и интеграции с внешними CRM.</td>
 <td>43232303 Customer relationship management CRM software.</td>
+<td>Strategy Analysis: Vendor Assessment + RADD: Data Modelling</td>
 </tr>
 <tr>
 <td align="right">25</td>
 <td>Интеграции с CRM, 1C, LDAP, marketplace</td>
+<td>platform → platform-integration</td>
 <td>Есть</td>
 <td>Product/Service integration: интеграционные endpoints и партнерские системы вокруг основного продукта.</td>
 <td>43232403 Enterprise application integration software + 81112106 Application service providers.</td>
+<td>RADD: Interface Analysis + Data Modelling</td>
 </tr>
 <tr>
 <td align="right">26</td>
 <td>Open API, webhook, API для УВК/CRM</td>
+<td>platform → open-api</td>
 <td>Есть</td>
 <td>Open API слой соответствует интеграционному подходу TM Forum: отделить продуктовый каталог, заказ, сервис и клиентские события от конкретного UI.</td>
 <td>43232403 Enterprise application integration software + 43232915 Platform interconnectivity software.</td>
+<td>RADD: Interface Analysis (API-контракт) + NFR Analysis</td>
 </tr>
 <tr>
 <td align="right">27</td>
 <td>Коллтрекинг</td>
+<td>analytics → call-tracking</td>
 <td>Есть</td>
 <td>Market &amp; Sales: атрибуция звонков к рекламным источникам; Service/Resource: динамические номера как ресурс.</td>
 <td>80141501 Marketing analysis + 83111500 Telephone communications.</td>
+<td>Solution Evaluation: Metrics and KPIs + Data Modelling</td>
 </tr>
 <tr>
 <td align="right">28</td>
 <td>Сквозная аналитика и ROMI</td>
+<td>analytics → end-to-end-analytics</td>
 <td>Есть</td>
 <td>Market &amp; Sales analytics: связывает коммуникации, расходы, лиды, сделки и выручку.</td>
 <td>80141501 Marketing analysis + 43232605 Analytical or scientific software.</td>
+<td>Solution Evaluation: Metrics and KPIs (ROMI) + Financial Analysis</td>
 </tr>
 <tr>
 <td align="right">29</td>
 <td>Мультиканальная аналитика и атрибуция</td>
+<td>analytics → multichannel-analytics</td>
 <td>Есть</td>
 <td>Market &amp; Sales + Customer insight: классифицирует требования к источникам, каналам и конверсиям.</td>
 <td>80141501 Marketing analysis.</td>
+<td>Solution Evaluation: Metrics and KPIs + Data Modelling</td>
 </tr>
 <tr>
 <td align="right">30</td>
 <td>Email-трекинг</td>
+<td>analytics → email-tracking</td>
 <td>Есть</td>
 <td>Customer interaction + Market &amp; Sales: email как канал коммуникации и атрибуции.</td>
 <td>43233501 Electronic mail software + 81161600 Electronic mail and messaging services.</td>
+<td>Solution Evaluation: Metrics and KPIs + Business Rules Analysis (согласия)</td>
 </tr>
 <tr>
 <td align="right">31</td>
 <td>Товарная аналитика / ecommerce analytics</td>
+<td>analytics → product-analytics</td>
 <td>Есть</td>
 <td>Market &amp; Sales: анализ спроса, товарных позиций и эффективности продаж.</td>
 <td>80141501 Marketing analysis + 43232307 Data mining software.</td>
+<td>Solution Evaluation: Metrics and KPIs + Data Modelling (качество данных)</td>
 </tr>
 <tr>
 <td align="right">32</td>
 <td>Анализ конкурентов</td>
+<td>analytics → competitor-analysis</td>
 <td>Есть</td>
 <td>Market intelligence в Market &amp; Sales domain; не является core-телеком сервисом, но поддерживает коммерческие решения.</td>
 <td>80141501 Marketing analysis + 80141500 Market research.</td>
+<td>Strategy Analysis: Benchmarking and Market Analysis</td>
 </tr>
 <tr>
 <td align="right">33</td>
 <td>Мессенджер-маркетинг</td>
+<td>digital-channels → messenger-marketing</td>
 <td>Есть</td>
 <td>Market &amp; Sales + Customer interaction: кампании в цифровых каналах, связанные с клиентскими событиями.</td>
 <td>43223205 Instant messaging platform + 81161601 Instant Messaging Administration Service.</td>
+<td>RADD: Business Rules Analysis (согласия) + Use Cases and Scenarios</td>
 </tr>
 <tr>
 <td align="right">34</td>
 <td>CPaaS / программируемые голосовые и messaging API</td>
+<td>platform → cpaas</td>
 <td>Частично</td>
 <td>TM Forum позволяет оформить как API-enabled Product/Service; у MANGO OFFICE есть API/webhook, но публично не выделен полный CPaaS как отдельная товарная линейка.</td>
 <td>81112106 Application service providers + 43232403 Enterprise application integration software.</td>
+<td>RADD: Interface Analysis (API) + NFR Analysis</td>
 </tr>
 <tr>
 <td align="right">35</td>
 <td>Service desk / ITSM helpdesk</td>
+<td>platform → service-desk</td>
 <td>Частично</td>
 <td>В TM Forum соответствует assurance, trouble ticket и customer problem; у MANGO OFFICE это ближе к контакт-центру, а не к самостоятельному ITSM-продукту.</td>
 <td>43231501 Helpdesk or call center software.</td>
+<td>RADD: Process Modelling (ITSM) + Business Rules Analysis</td>
 </tr>
 <tr>
 <td align="right">36</td>
 <td>Информационная безопасность</td>
+<td>security → information-security</td>
 <td>Есть</td>
 <td>Enterprise/Security capability, поддерживающая доверие и эксплуатацию сервиса; не основной коммуникационный продукт.</td>
 <td>43233200 Security and protection software или смежные security-коды по актуальному UNSPSC.</td>
+<td>RADD: NFR Analysis (ИБ) + Strategy Analysis: Risk Analysis</td>
 </tr>
 <tr>
 <td align="right">37</td>
 <td>SIP-телефоны, гарнитуры и устройства</td>
+<td>hardware → telephony-equipment</td>
 <td>Вне SaaS-ядра</td>
 <td>Resource domain: физические ресурсы доступа к сервису. В требованиях лучше отделять от SaaS-функциональности.</td>
 <td>43222800 Telephony equipment; 43222900 Telephony equipment accessories.</td>
+<td>Solution Evaluation: Vendor Assessment + критерии приёмки</td>
+</tr>
+<tr>
+<td align="right">38</td>
+<td>Маркировка номера, «карусельные номера», защита дозваниваемости</td>
+<td>voice-ucaas → number-branding</td>
+<td>Не выявлено</td>
+<td>Resource domain: маркировка и ротация номерной ёмкости как resource-level сервис оператора связи; Market &amp; Sales для калькуляции эффективности дозвона.</td>
+<td>83111500 Telephone communications + 80141501 Marketing analysis.</td>
+<td>RADD: Business Rules Analysis (правила маркировки) + NFR Analysis (дозваниваемость)</td>
+</tr>
+<tr>
+<td align="right">39</td>
+<td>Голосовые SMS / автоинформирование через голосовой канал</td>
+<td>voice-ucaas → voice-sms-broadcast</td>
+<td>Частично</td>
+<td>Service automation для голосового канала + Market &amp; Sales: массовое автоинформирование, отдельное от текстового SMS и от outbound-кампании.</td>
+<td>83111510 Interactive voice response service + 80141603 Telemarketing.</td>
+<td>RADD: Process Modelling + Business Rules Analysis (согласия)</td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td>Self-Service портал клиента / личный кабинет заказчика SaaS</td>
+<td>contact-center → self-service-portal</td>
+<td>Частично</td>
+<td>Customer self-service в Customer domain + Product: каталог самообслуживания, отделённый от operator workspace.</td>
+<td>81162000 Cloud-based software as a service + 43232703 Interactive voice response software (self-service).</td>
+<td>RADD: Prototyping / UX + NFR Analysis (ПДн при самообслуживании)</td>
+</tr>
+<tr>
+<td align="right">41</td>
+<td>Мобильное приложение оператора CCaaS</td>
+<td>contact-center → operator-mobile-app</td>
+<td>Частично</td>
+<td>Customer interaction + Resource: мобильный endpoint оператора, отделённый от Mango Talker как UCaaS-инструмента сотрудника.</td>
+<td>43232702 Desktop communications software + 43232903 Contact center software.</td>
+<td>RADD: Prototyping + NFR Analysis (мобильная платформа)</td>
+</tr>
+<tr>
+<td align="right">42</td>
+<td>Услуги поддержки и развития CRM/SaaS как vendor-service</td>
+<td>platform → vendor-support-services</td>
+<td>Не выявлено</td>
+<td>Partner/Enterprise: managed/professional services вокруг продукта (engaged party, agreement), а не сам продукт.</td>
+<td>80101507 Application maintenance services + 43232303 Customer relationship management CRM software.</td>
+<td>Strategy Analysis: Vendor Assessment + Requirements Life Cycle Management</td>
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
 <h2>Сравнительная таблица к российским стандартам</h2>
+<p>Строки 38–42 (новые классы R2.1–R2.5) добавлены в версии 3.0; строки 1–37 сохранены без изменений.</p>
 <markdown-accessiblity-table><table role="table">
 <thead>
 <tr>
@@ -861,6 +1688,41 @@
 <td>126-ФЗ для средств связи и подтверждения соответствия, эксплуатационная документация производителя, ГОСТ Р 53724-2009 как контекст качества услуги</td>
 <td>Отделять аппаратную поставку от SaaS-функции; фиксировать совместимость, сертификацию/декларации, гарантию и ответственность за эксплуатацию устройства</td>
 </tr>
+<tr>
+<td align="right">38</td>
+<td>Маркировка номера, «карусельные номера», защита дозваниваемости</td>
+<td>ОКПД 2: 61.10.xx телекоммуникационные услуги (resource-level сервис оператора связи)</td>
+<td>126-ФЗ, ПП РФ N 1994, 38-ФЗ при рекламном характере коммуникации</td>
+<td>Фиксировать тип маркировки/ротации номеров, согласование с оператором, влияние на дозваниваемость, тарификацию и рекламный контекст</td>
+</tr>
+<tr>
+<td align="right">39</td>
+<td>Голосовые SMS / автоинформирование через голосовой канал</td>
+<td>ОКПД 2: 61.10/61.20 телекоммуникационная услуга/IVR-автоинформирование</td>
+<td>126-ФЗ, 38-ФЗ, ПП РФ N 1994, 152-ФЗ, ГОСТ Р 55540-2013</td>
+<td>Отделять голосовое автоинформирование от текстового SMS и от outbound-кампании; фиксировать согласия, рекламный характер, подтверждение доставки и журнал</td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td>Self-Service портал клиента / личный кабинет заказчика SaaS</td>
+<td>ОКПД 2: 62.0/63.11 SaaS/ПО самообслуживания</td>
+<td>ГОСТ ISO/IEC 17788-2016, ГОСТ Р ИСО/МЭК 25010-2015, 152-ФЗ</td>
+<td>Описывать сценарии самообслуживания, аутентификацию, доступ к записям/услугам, UX и обработку ПДн при самообслуживании</td>
+</tr>
+<tr>
+<td align="right">41</td>
+<td>Мобильное приложение оператора CCaaS</td>
+<td>ОКПД 2: 62.0 ПО/SaaS, мобильное рабочее место оператора</td>
+<td>ГОСТ Р 55540-2013, ГОСТ Р ИСО/МЭК 25010-2015, 152-ФЗ</td>
+<td>Отделять от Mango Talker; описывать мобильную обработку обращений, push-уведомления, офлайн-режим, безопасность устройства и качество ПО</td>
+</tr>
+<tr>
+<td align="right">42</td>
+<td>Услуги поддержки и развития CRM/SaaS как vendor-service</td>
+<td>ОКПД 2: 62.0 услуги сопровождения/доработки ПО (vendor services)</td>
+<td>ГОСТ Р ИСО/МЭК 12207-2010, ГОСТ Р ИСО/МЭК 20000-1-2021</td>
+<td>Фиксировать предмет услуги (поддержка/доработка), SLA, scope изменений, ответственность сторон и лицензионную модель доработок</td>
+</tr>
 </tbody>
 </table></markdown-accessiblity-table>
 <h2>Рабочая таксономия для входящих требований</h2>
@@ -926,11 +1788,32 @@
 </tr>
 </tbody>
 </table></markdown-accessiblity-table>
+<p>В версии 3.0 к этим продуктовым полям добавляется отдельный закупочный слой (<code class="notranslate">tariff-model</code>, <code class="notranslate">contract-duration</code>, <code class="notranslate">license-model</code>, <code class="notranslate">procurement-format</code>, <code class="notranslate">certification-registry</code>, <code class="notranslate">vendor-qualification</code>, <code class="notranslate">confidentiality-terms</code>). Он описан в §«🛒 Commercial Layer» и заполняется независимо от продуктового ключа.</p>
 <p>Примеры:</p>
 <ul>
 <li>"Нужно принимать обращения из Telegram, WhatsApp, сайта и email в одном окне": Product family <code class="notranslate">CCaaS / Digital channels</code>; Mango status <code class="notranslate">Есть</code>; TM Forum <code class="notranslate">Customer interaction</code>; UNSPSC <code class="notranslate">43223204 Unified messaging platform</code> и <code class="notranslate">43232903 Contact center software</code>; ОКПД 2 <code class="notranslate">62.0/63.11</code> или телематический слой по предмету договора; Russian standards overlay <code class="notranslate">ГОСТ Р 55540-2013</code>, <code class="notranslate">ПП РФ N 2607</code>, <code class="notranslate">152-ФЗ</code>.</li>
 <li>"Нужно автоматически оценивать все звонки операторов по чек-листу": Product family <code class="notranslate">AI / QM</code>; Mango status <code class="notranslate">Есть</code>; TM Forum <code class="notranslate">Service assurance</code>; UNSPSC <code class="notranslate">43233413 Voice recognition software</code> и <code class="notranslate">43232606 Compliance software</code>; Russian standards overlay <code class="notranslate">ГОСТ Р 59898-2021</code>, <code class="notranslate">ГОСТ Р 55540-2013</code>, <code class="notranslate">152-ФЗ</code>, приказ ФСТЭК N 21.</li>
 <li>"Нужно полноценное ITSM-решение для внутренних инцидентов ИТ": Product family <code class="notranslate">Adjacent ITSM</code>; Mango status <code class="notranslate">Частично/не core</code>; TM Forum <code class="notranslate">Assurance / trouble ticket</code>; UNSPSC <code class="notranslate">43231501 Helpdesk or call center software</code>; Russian standards overlay <code class="notranslate">ГОСТ Р ИСО/МЭК 20000-1-2021</code>; рекомендация - не смешивать с CCaaS и сравнивать как отдельный процессный слой.</li>
+</ul>
+<h2>🚀 Возможные улучшения (не активны в v3.0)</h2>
+<p>Раздел фиксирует атрибуты, которые проявились в анализе корпуса ТЗ (<code class="notranslate">classification-tz.md</code>, рекомендации R2.6–R2.8), но осознанно <strong>не вносятся</strong> в основную модель v3.0. Они не являются продуктовыми классами и при преждевременном включении раздули бы таксономию (нарушение Anti-Inflation principle, см. <a href="../../governance/REPO_MODEL.md">governance/REPO_MODEL.md</a>). Каждый атрибут описан с обоснованием отсрочки и критерием активации в будущей версии.</p>
+<h3>R2.6 — Атрибут «модель сценарирования» бота</h3>
+<ul>
+<li><strong>Описание</strong>: атрибут со значениями <code class="notranslate">vendor-managed / customer-configured / mixed</code> для классов <code class="notranslate">voice-bot</code> (row 17) и <code class="notranslate">chatbot</code> (row 16): кто авторизует и сопровождает сценарий — поставщик, заказчик или совместно.</li>
+<li><strong>Почему отложено</strong>: это не отдельный класс продукта, а атрибут операционной модели уже существующих классов. Корпус ТЗ (TZ 26/29) разделяет программируемого Заказчиком/Исполнителем робота, но пока этого недостаточно, чтобы выделять Feature.</li>
+<li><strong>Критерий активации</strong>: когда ≥3 ТЗ потребуют сравнивать ботов именно по авторству сценария, ввести Feature <code class="notranslate">scenario-authoring-model</code> в классы <code class="notranslate">voice-bot</code> и <code class="notranslate">chatbot</code> со значениями-параметрами <code class="notranslate">vendor-managed | customer-configured | mixed</code>.</li>
+</ul>
+<h3>R2.7 — Атрибут «Industry vertical»</h3>
+<ul>
+<li><strong>Описание</strong>: контекстный тег отрасли требования: <code class="notranslate">generic / hr-recruiting / logistics-delivery / healthcare-mis / finance / e-commerce / energy-utility / telco-reseller</code>.</li>
+<li><strong>Почему отложено</strong>: вертикаль описывает контекст применения, а не продуктовый класс; голосовой робот в HR-сценарии остаётся тем же <code class="notranslate">voice-bot</code> (row 17). Преждевременное включение в продуктовую иерархию размыло бы границу «продукт vs сценарий применения».</li>
+<li><strong>Критерий активации</strong>: когда отраслевой шаблон станет самостоятельным продуктовым предложением (отдельный каталожный SKU/тариф), а не просто настройкой существующего класса; до этого вертикаль уместна как тег в backlog БА, а не в эталоне.</li>
+</ul>
+<h3>R2.8 — Compliance-значение «Реестр российского ПО (Минцифры)»</h3>
+<ul>
+<li><strong>Описание</strong>: дополнить compliance trigger значением <code class="notranslate">Реестр российского ПО (Минцифры)</code> и связать его с классами 1, 11, 16, 17, 19, 25, 26 (продукты, по которым закупка регулярно требует подтверждения импортозамещения).</li>
+<li><strong>Почему отложено</strong>: это не продуктовая capability, а закупочно-нормативный признак. Его естественное место — закупочное поле <code class="notranslate">certification-registry</code> в §«🛒 Commercial Layer», а не продуктовая иерархия. До формализации процедуры импортозамещения он остаётся compliance-overlay.</li>
+<li><strong>Критерий активации</strong>: когда закупка начнёт использовать наличие в реестре как gating-фильтр (а не справочный признак), вынести его как обязательное значение поля <code class="notranslate">certification-registry</code> и добавить ссылку на реестр в §«Источники» (уже добавлена ниже как подготовительный шаг).</li>
 </ul>
 <h2>Рекомендации по ведению стандарта</h2>
 <ol>
@@ -941,6 +1824,7 @@
 <li>Для российских закупок и договоров использовать ОКПД 2 как отдельное поле; ОКВЭД 2 использовать только для описания деятельности поставщика, а не как замену продуктовому коду.</li>
 <li>Для требований поддержки, SLA, инцидентов и service desk дополнительно помечать ITIL/ISO 20000 или ГОСТ Р ИСО/МЭК 20000-1, потому что эти фреймворки лучше описывают процессы эксплуатации, но не заменяют продуктовую классификацию.</li>
 <li>Для требований с ПДн, рекламными коммуникациями, услугами связи или КИИ ставить явный compliance trigger и передавать финальную формулировку ответственным за правовую/ИБ-проверку.</li>
+<li>Заполнять продуктовый ключ (<code class="notranslate">Domain → Capability → Feature → Atomic Function</code>) и закупочный слой (<code class="notranslate">Commercial Layer</code>) независимо: смешение «что делает продукт» и «на каких условиях он закупается» снижает сравнимость требований.</li>
 </ol>
 <h2>Источники</h2>
 <ul>
@@ -956,6 +1840,7 @@
 <li>TM Forum, Business Process Framework (eTOM): <a href="https://www.tmforum.org/business-process-framework/" rel="nofollow">https://www.tmforum.org/business-process-framework/</a></li>
 <li>TM Forum, Information Framework (SID): <a href="https://www.tmforum.org/oda/information-systems/information-framework-sid/" rel="nofollow">https://www.tmforum.org/oda/information-systems/information-framework-sid/</a></li>
 <li>TM Forum, TMF620 Product Catalog Management API: <a href="https://www.tmforum.org/resources/standard/tmf620-product-catalog-management-api-rest-specification-r14-5-0/" rel="nofollow">https://www.tmforum.org/resources/standard/tmf620-product-catalog-management-api-rest-specification-r14-5-0/</a></li>
+<li>IIBA, A Guide to the Business Analysis Body of Knowledge (BABOK Guide) v3: <a href="https://www.iiba.org/career-resources/a-business-analysis-professionals-foundation-for-success/babok/" rel="nofollow">https://www.iiba.org/career-resources/a-business-analysis-professionals-foundation-for-success/babok/</a></li>
 <li>UNDP, United Nations Standard Products and Services Code: <a href="https://www.undp.org/unspsc" rel="nofollow">https://www.undp.org/unspsc</a></li>
 <li>UNGM, UNSPSC browser and Excel export: <a href="https://www.ungm.org/Public/UNSPSC" rel="nofollow">https://www.ungm.org/Public/UNSPSC</a></li>
 <li>PeopleCert, ITIL 4 practices overview: <a href="https://www.peoplecert.org/ITIL4-practices" rel="nofollow">https://www.peoplecert.org/ITIL4-practices</a></li>
@@ -973,6 +1858,7 @@
 <li>Постановление Правительства РФ N 2607 "Об утверждении Правил оказания телематических услуг связи": <a href="https://www.consultant.ru/document/cons_doc_LAW_406301/" rel="nofollow">https://www.consultant.ru/document/cons_doc_LAW_406301/</a></li>
 <li>Приказ ФСТЭК России N 21 по мерам защиты персональных данных: <a href="https://www.consultant.ru/document/cons_doc_LAW_146520/" rel="nofollow">https://www.consultant.ru/document/cons_doc_LAW_146520/</a></li>
 <li>Приказ ФСТЭК России N 239 по безопасности значимых объектов КИИ: <a href="https://www.consultant.ru/document/cons_doc_LAW_294287/" rel="nofollow">https://www.consultant.ru/document/cons_doc_LAW_294287/</a></li>
+<li>Реестр российского ПО (Минцифры России): <a href="https://reestr.digital.gov.ru/" rel="nofollow">https://reestr.digital.gov.ru/</a></li>
 <li>ГОСТ Р ИСО/МЭК 20000-1-2021: <a href="https://protect.gost.ru/gost/details/dd4227f1-d238-4214-9863-cac1c2dcb841" rel="nofollow">https://protect.gost.ru/gost/details/dd4227f1-d238-4214-9863-cac1c2dcb841</a></li>
 <li>ГОСТ ISO/IEC 17788-2016: <a href="https://docs.cntd.ru/document/1200141425" rel="nofollow">https://docs.cntd.ru/document/1200141425</a></li>
 <li>ГОСТ Р 70860-2023: <a href="https://docs.cntd.ru/document/1302614749" rel="nofollow">https://docs.cntd.ru/document/1302614749</a></li>
