@@ -33,13 +33,21 @@ source: projects/README-old.md
 
 ## Рекомендуемая структура проекта
 
+Подкаталоги проекта наследуют структуру репозитория по
+[standards/PROJECT_STRUCTURE_INHERITANCE.md](../standards/PROJECT_STRUCTURE_INHERITANCE.md):
+проект может добавлять `standards/`, `kb/`, `prompts/`, `docs/`,
+`experiments/` и `decisions/` только в области своего проекта и без
+обязательных зависимостей для других проектов.
+
 ```text
 projects/<project-slug>/
   README.md
-  context.md
+  standards/
+  kb/
   prompts/
-  knowledge-base/
-  process/
+  docs/
+  experiments/
+  decisions/
 ```
 
 ## Активные проекты

@@ -18,6 +18,7 @@
 | Product profile | Active | Продуктовые spoke-проекты (ПО, сервис, услуга) | [PRODUCT_PROFILE.md](PRODUCT_PROFILE.md) |
 | Team contract template | Active | Создание project-level `CONTRIBUTING.md` и `AI_GOVERNANCE.md` для spoke-проектов | [TEAM_CONTRACT.md](TEAM_CONTRACT.md) |
 | Жизненный цикл задач | Active | Issues, PRs, переходы статусов, AI-assisted task execution | [ISSUE_WORKFLOW.md](ISSUE_WORKFLOW.md) |
+| PROJECT_STRUCTURE_INHERITANCE.md | Active | Правило наследования структуры каталогов в проектах; обязательно для новых проектов | [PROJECT_STRUCTURE_INHERITANCE.md](PROJECT_STRUCTURE_INHERITANCE.md) |
 | Research report | Planned | `research/<domain>/` | Создать после повторяющихся research tasks. |
 | Framework proposal | Planned | `frameworks/` | Создать после documented framework gap. |
 | Project knowledge base | Planned | `projects/` | Создать после повторяющейся потребности в project context. |

@@ -14,7 +14,7 @@
 | `standards/` | Плоский реестр standards, templates и artifact format rules. | Добавлять standard после повторяющейся review или coordination problem. |
 | `research/` | Domain-based research и source-backed analysis. | Использовать `research/<domain>/` для домена или topic area. |
 | `frameworks/` | Методологии для hybrid human + AI teams. | Создавать только после comparison, показывающего недостаточность existing approaches. |
-| `projects/` | Project knowledge bases, prompts, process context и spoke links. | Использовать, когда работа относится к scoped initiative, но не к production code. |
+| `projects/` | Project knowledge bases, prompts, process context и spoke links. | Использовать, когда работа относится к scoped initiative, но не к production code. Наследование структуры в проектах — см. `standards/PROJECT_STRUCTURE_INHERITANCE.md`. |
 | `education/` | Open education programs, course materials и teaching scenarios. | Использовать для материалов, пригодных для обучения или partner delivery. |
 | `governance/` | Repository model и cross-cutting operating decisions. | Добавлять governance files только когда они уточняют active decision-making. |
 | `tools/` | Локальные validation и maintenance scripts. | Добавлять scripts, которые делают проверки воспроизводимыми. |
@@ -40,6 +40,12 @@
 | Governance text распадается на несколько активных областей. | Выделить только область, где уже есть active use и review pain. |
 | Production code получает собственный lifecycle. | Перенести его в spoke repository и ссылаться назад на этот hub. |
 | Historical content может быть полезным. | Переносить выборочно через reviewable PR и указывать source path из audit/history. |
+
+## Standards
+
+- [standards/PROJECT_STRUCTURE_INHERITANCE.md](../standards/PROJECT_STRUCTURE_INHERITANCE.md)
+  фиксирует наследование структуры каталогов в проектах и границы
+  проект-специфичных стандартов.
 
 ## Migration Handling
 

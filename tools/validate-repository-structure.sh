@@ -45,6 +45,7 @@ is_active_file() {
     standards/PRODUCT_PROFILE.md | \
     standards/TEAM_CONTRACT.md | \
     standards/ISSUE_WORKFLOW.md | \
+    standards/PROJECT_STRUCTURE_INHERITANCE.md | \
     research/mango/taxonomy-concept-2026-05.md | \
     research/mango/requirements-lifecycle-uncertainty-2026-05.md | \
     research/mango/rag-mapping-roadmap-2026-05.md | \
@@ -118,6 +119,7 @@ required_files=(
   "standards/PRODUCT_PROFILE.md"
   "standards/TEAM_CONTRACT.md"
   "standards/ISSUE_WORKFLOW.md"
+  "standards/PROJECT_STRUCTURE_INHERITANCE.md"
   "research/README.md"
   "research/mango/README.md"
   "research/mango/classification.md"
@@ -218,6 +220,7 @@ require_text "standards/README.md" "TEAM_CONTRACT.md"
 require_text "standards/README.md" "standards/GLOSSARY.md"
 require_text "standards/README.md" "standards/EDUCATION_PROFILE.md"
 require_text "standards/README.md" "PRODUCT_PROFILE.md"
+require_text "standards/README.md" "PROJECT_STRUCTURE_INHERITANCE.md"
 require_text "standards/README.md" "ARTIFACT_MAP.md"
 require_text "standards/README.md" "ISSUE_WORKFLOW.md"
 
@@ -255,6 +258,16 @@ require_text "standards/ISSUE_WORKFLOW.md" '`review`'
 require_text "standards/ISSUE_WORKFLOW.md" '`merged`'
 require_text "standards/ISSUE_WORKFLOW.md" '`closed`'
 require_text "standards/ISSUE_WORKFLOW.md" '`blocked`'
+
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "status: canonical"
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "version: 1.0"
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "updated: 2026-05-26"
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "ai-generated: false"
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "Разрешённые подкаталоги"
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "Правила связывания стандартов"
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "scope: mango-only"
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "Пример структуры проекта"
+require_text "standards/PROJECT_STRUCTURE_INHERITANCE.md" "Репозиторий-широкий стандарт НЕ должен ссылаться на проектный"
 require_text "standards/ISSUE_WORKFLOW.md" "User Story / ФТ"
 require_text "standards/ISSUE_WORKFLOW.md" "CHANGELOG.md"
 require_text "standards/ISSUE_WORKFLOW.md" "governance/ARTIFACT_MAP.md"
