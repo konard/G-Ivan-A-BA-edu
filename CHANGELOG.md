@@ -6,6 +6,12 @@ All notable repository governance changes are documented here.
 
 ### Added
 
+- Issue #67: четырёхуровневая иерархия `Domain → Capability → Feature →
+  Atomic Function` в `research/mango/classification.md` (v3.0): семь доменов
+  пилота, явные слои `📊 Product Layer` и `🛒 Commercial Layer` со связью через
+  `related_commercial_fields`, пять новых `Capability` (R2.1–R2.5) и раздел
+  `🚀 Возможные улучшения (не активны в v3.0)` с отложенными атрибутами
+  R2.6–R2.8 (обоснование и критерии активации).
 - Issue #65: Mango-only `projects/mango/standards/classification-glossary.md`
   with the Domain -> Capability -> Feature -> Atomic Function hierarchy,
   source-backed definitions, Mango examples, mapping table and terms requiring
@@ -17,6 +23,11 @@ All notable repository governance changes are documented here.
 
 ### Changed
 
+- Issue #67: `research/mango/classification.md` обновлён с версии 2 до v3.0
+  аддитивно — все 37 существующих строк сохранены и переструктурированы под
+  новую модель; сравнительная таблица международной классификации дополнена
+  колонками `Domain → Capability (v3.0)` и `BABOK` и строками 38–42; HTML-экспорт
+  `research/mango/classification.html` перегенерирован.
 - Issue #65: `projects/mango/README.md`, `governance/ARTIFACT_MAP.md` and
   `tools/validate-repository-structure.sh` now register the Mango
   classification glossary as an active project artifact.
@@ -26,6 +37,9 @@ All notable repository governance changes are documented here.
 
 ### Removed
 
+- Issue #67: повторно удалён служебный корневой `.gitkeep`, восстановленный при
+  создании PR-ветки, чтобы `tools/validate-repository-structure.sh` проходил без
+  ошибок.
 - Issue #59: служебный корневой `.gitkeep`, автогенерированный при создании PR,
   чтобы `tools/validate-repository-structure.sh` снова проходил без ошибок.
 
