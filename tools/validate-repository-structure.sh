@@ -80,6 +80,8 @@ is_active_file() {
     research/mango/requirements-lifecycle-uncertainty-2026-05.md | \
     research/mango/rag-mapping-roadmap-2026-05.md | \
     research/mango/capability-decomposition-2026-05.md | \
+    research/prompts-classification-audit-2026-05.md | \
+    research/prompts-classification-standard-2026-05.md | \
     research/README.md | \
     research/mango/README.md | \
     research/mango/classification.md | \
@@ -426,6 +428,8 @@ require_text "governance/ARTIFACT_MAP.md" "projects/README.md"
 require_text "research/README.md" "status: canonical"
 require_text "research/README.md" "standards/RESEARCH_PROFILE.md"
 require_text "research/README.md" "research/<domain>/exp-<slug>/"
+require_text "research/README.md" "prompts-classification-audit-2026-05.md"
+require_text "research/README.md" "prompts-classification-standard-2026-05.md"
 
 require_text "research/mango/README.md" "status: canonical"
 require_text "research/mango/README.md" "classification.md"
@@ -445,6 +449,24 @@ require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Маппинг п�
 require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Roadmap реализации проекта"
 require_text "research/mango/rag-mapping-roadmap-2026-05.md" "PlantUML"
 require_text "research/mango/rag-mapping-roadmap-2026-05.md" "Вопросы для согласования"
+
+require_text "research/prompts-classification-audit-2026-05.md" "status: draft"
+require_text "research/prompts-classification-audit-2026-05.md" "type: internal-analysis"
+require_text "research/prompts-classification-audit-2026-05.md" "scope: repo-wide"
+require_text "research/prompts-classification-audit-2026-05.md" "Преобладающие типы"
+require_text "research/prompts-classification-audit-2026-05.md" "Паттерны отладки"
+require_text "research/prompts-classification-audit-2026-05.md" "Пробелы"
+require_text "research/prompts-classification-audit-2026-05.md" "Выводы для классификации"
+
+require_text "research/prompts-classification-standard-2026-05.md" "status: draft"
+require_text "research/prompts-classification-standard-2026-05.md" "type: classification-standard"
+require_text "research/prompts-classification-standard-2026-05.md" "scope: repo-wide"
+require_text "research/prompts-classification-standard-2026-05.md" "Таксономия промптов"
+require_text "research/prompts-classification-standard-2026-05.md" "Матрица"
+require_text "research/prompts-classification-standard-2026-05.md" "Когда использовать"
+require_text "research/prompts-classification-standard-2026-05.md" "Шаблоны промптов"
+require_text "research/prompts-classification-standard-2026-05.md" "План интеграции"
+require_text "research/prompts-classification-standard-2026-05.md" "Вопросы для согласования"
 
 require_text "research/mango/capability-decomposition-2026-05.md" "status: draft"
 require_text "research/mango/capability-decomposition-2026-05.md" "type: atomic-functions-reference"

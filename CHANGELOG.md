@@ -6,6 +6,14 @@ All notable repository governance changes are documented here.
 
 ### Added
 
+- Issue #79: исследование `research/prompts-classification-audit-2026-05.md`
+  (аудит входных данных: инвентаризация 6 Mango промптов, паттерны отладки,
+  пробелы классификации) и `research/prompts-classification-standard-2026-05.md`
+  (стандарт классификации промптов: таксономия из 6 осей, матрица «тип × зрелость
+  × сценарий» с 10 ячейками, 3 шаблона для отладки формата (Simple/System/Agent),
+  план интеграции к Mango промптам и вопросы для согласования). Scope: repo-wide.
+  Файлы зарегистрированы как active в `tools/validate-repository-structure.sh`,
+  `governance/ARTIFACT_MAP.md` и `research/README.md`.
 - Issue #77: аудит `projects/mango/experiments/prompts-audit-2026-05-26.md`,
   self-test `projects/mango/experiments/prompts-selftest-2026-05-26.md` и
   шесть готовых Mango prompt assets в `projects/mango/prompts/`: TZ Stats,
